@@ -6,7 +6,7 @@
 #    By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/16 13:55:12 by maalexan          #+#    #+#              #
-#    Updated: 2023/10/16 14:21:18 by maalexan         ###   ########.fr        #
+#    Updated: 2023/10/16 14:46:31 by maalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ OBJ_DIR		:=	./objs
 HDR_DIR		:=	./
 
 # Compilation flags
-CC			:= c++
-CFLAGS		:=	-Wall -Wextra -Werror -I $(HDR_DIR)
+CC			:=	c++
+CFLAGS		:=	-Wall -Wextra -Werror -I $(HDR_DIR) -std=c++98
 
 # Source files
 FUN			:=	main.cpp \
