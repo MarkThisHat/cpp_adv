@@ -6,7 +6,7 @@
 #    By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/16 13:55:12 by maalexan          #+#    #+#              #
-#    Updated: 2023/10/16 14:03:40 by maalexan         ###   ########.fr        #
+#    Updated: 2023/10/16 14:21:18 by maalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,18 +26,18 @@ CFLAGS		:=	-Wall -Wextra -Werror -I $(HDR_DIR)
 FUN			:=	main.cpp \
 				
 # Object files
-OBJ			:=	$(FUN:%.c=$(OBJ_DIR)/%.o)
+OBJ			:=	$(FUN:%.cpp=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) -o $@
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR)/%.o: $(BSRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(BSRC_DIR)/%.cpp
 	@mkdir -p $(@D)
 	@$(CC) $(BCFLAGS) -c $< -o $@
 
