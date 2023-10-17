@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:54:12 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 07:57:47 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:26:10 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@
 class Bank
 {
 	private:
-		int		liquidity;
+		int		liquidity_;
+		std::vector<Account *> clientAccounts;
+
 		bool	invalidId(int id) const;
 		bool	isClosed(int id) const;
-		std::vector<Account *> clientAccounts;
+
+		friend	std::ostream& operator<<(std::ostream& p_os, const Account& p_account);
+		friend	std::ostream& operator<<(std::ostream& os, const Bank& bank);
 
 	public:
 		Bank(void);
@@ -39,10 +43,6 @@ class Bank
 
 		int			getLiqudity(void) const;
 		int			getBalance(int id) const;
-
-		friend	std::ostream& operator<<(std::ostream& p_os, const Account& p_account);
-
-		friend	std::ostream& operator<<(std::ostream& os, const Bank& bank);
 };
 
 #endif

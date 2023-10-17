@@ -6,19 +6,13 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:04:01 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/16 14:12:20 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:29:12 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.hpp"
 
-int	main(void)
-{
-	std::cout << "Hello World!\n";
-}
-
-/*
-int main()
+int main(void)
 {
 	Account accountA = Account();
 	accountA.id = 0;
@@ -47,4 +41,3 @@ int main()
 
 	return (0);
 }
-*/

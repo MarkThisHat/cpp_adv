@@ -6,7 +6,7 @@
 #    By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/16 13:55:12 by maalexan          #+#    #+#              #
-#    Updated: 2023/10/16 14:46:31 by maalexan         ###   ########.fr        #
+#    Updated: 2023/10/17 10:29:31 by maalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ CFLAGS		:=	-Wall -Wextra -Werror -I $(HDR_DIR) -std=c++98
 
 # Source files
 FUN			:=	main.cpp \
+				Bank.cpp \
+				Account.cpp
 				
 # Object files
 OBJ			:=	$(FUN:%.cpp=$(OBJ_DIR)/%.o)

@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:18:26 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/16 22:43:36 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:19:08 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 class Account
 {
 	private:
-		int		m_id;
-		int		m_value;
+		int		id_;
+		int		value_;
 
 		Account(int	id, int value);
 
