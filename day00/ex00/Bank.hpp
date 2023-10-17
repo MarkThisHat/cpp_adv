@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:54:12 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/16 23:26:05 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 07:57:47 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ class Bank
 		int			getLiqudity(void) const;
 		int			getBalance(int id) const;
 
-		friend 	std::ostream& operator<<(std::ostream& os, const Bank& bank);
+		friend	std::ostream& operator<<(std::ostream& p_os, const Account& p_account);
+
+		friend	std::ostream& operator<<(std::ostream& os, const Bank& bank);
 };
 
 #endif

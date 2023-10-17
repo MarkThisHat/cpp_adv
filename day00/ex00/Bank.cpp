@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:45:38 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 07:43:33 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 07:48:41 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,18 @@ void	Bank::withdraw(int id, int value)
 {
 	if (invalidId(id))
 		return ;
-	if (value > 0 && value <= getBalance(id))
+	if (value > 0)
 	{
-		clientAccounts[id]->m_value -= value;
-		liquidity -= value;
+		if (value > getBalance(id))
+			std::cerr << "Insufficient funds" << std::endl;
+		else
+		{
+			clientAccounts[id]->m_value -= value;
+			liquidity -= value;
+		}
 	}
+	else
+		std::cerr << "Invalid withdraw amount" << std::endl;
 }
 
 void	loan(int id, int loaned_amount)
