@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:45:38 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 10:50:19 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:07:49 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ Bank::Bank(void) :
 
 Bank::~Bank(void)
 {
-	for(Account* account: clientAccounts_)
-	{
-		delete account;
-	}
+	for (std::vector<Account*>::iterator it = clientAccounts_.begin();\
+	 it != clientAccounts_.end(); ++it)
+        delete *it;
+
 }
 
 Account*	Bank::createAccount(int value)
@@ -89,12 +89,12 @@ void	Bank::loan(int id, int loaned_amount)
 		std::cerr << "Cannot loan that amount" << std::endl;
 }
 
-int	getLiquidity(void) const
+int	Bank::getLiquidity(void) const
 {
 	return (liquidity_);
 }
 
-int	getBalance(int id) const
+int	Bank::getBalance(int id) const
 {
 	if (invalidId(id))
 		return (-1);
@@ -103,7 +103,7 @@ int	getBalance(int id) const
 
 bool	Bank::invalidId(int id) const
 {
-	if (id < 0 || id >= clientAccounts_.size())
+	if (id < 0 || id >= (int)clientAccounts_.size())
 	{
 		std::cerr << "Invalid account ID" << std::endl;
 		return (true);
@@ -121,11 +121,12 @@ bool	Bank::isClosed(int id) const
 	return (false);	
 }
 
-friend std::ostream& operator<<(std::ostream& p_os, const Bank& p_bank)
+std::ostream& operator<<(std::ostream& p_os, const Bank& p_bank)
 {
 	p_os << "Bank informations : " << std::endl;
 	p_os << "Liquidity : " << p_bank.liquidity_ << std::endl;
-	for (auto &clientAccount : p_bank.clientAccounts_)
-	p_os << *clientAccount << std::endl;
+	for (std::vector<Account*>::const_iterator it = p_bank.clientAccounts_.begin();\
+	 it != p_bank.clientAccounts_.end(); ++it)
+		p_os << **it << std::endl;
 	return (p_os);
 }
