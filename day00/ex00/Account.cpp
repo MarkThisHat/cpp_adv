@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 16:24:47 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 10:51:05 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:12:25 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Account::Account(int id, int value) :
 	value_(value)
 {}
 
-Account::~Account(void) = default;
+Account::~Account(void) {};
 
 int	Account::getId(void) const
 {
@@ -29,7 +29,7 @@ int	Account::getValue(void) const
 	return (value_);
 }
 
-friend std::ostream& operator<<(std::ostream& p_os, const Account& p_account)
+std::ostream& operator<<(std::ostream& p_os, const Account& p_account)
 {
 	p_os << "[" << p_account.id_ << "] - [" << p_account.value_ << "]";
 	return (p_os);

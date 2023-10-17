@@ -6,12 +6,14 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:18:26 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 10:50:38 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:09:41 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ACCOUNT_HPP
 # define ACCOUNT_HPP
+
+#include <iostream>
 
 class Account
 {
