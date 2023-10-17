@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:54:12 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 10:51:57 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:30:03 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class Bank
 		int		liquidity_;
 		std::vector<Account *> clientAccounts_;
 
-		bool	invalidId(int id) const;
-		bool	isClosed(int id) const;
+		void	checkInvalidId(int id) const;
+		void	checkIsClosed(int id) const;
 
 		friend	std::ostream& operator<<(std::ostream& os, const Bank& bank);
 

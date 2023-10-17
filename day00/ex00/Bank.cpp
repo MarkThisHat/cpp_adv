@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:45:38 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 11:07:49 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:40:56 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,72 +21,57 @@ Bank::~Bank(void)
 	for (std::vector<Account*>::iterator it = clientAccounts_.begin();\
 	 it != clientAccounts_.end(); ++it)
         delete *it;
-
 }
 
 Account*	Bank::createAccount(int value)
 {
 	if (value < 0)
-	{
-		std::cerr << "Can't create account with negative value." << std::endl;
-		return (NULL);
-	}
+		throw std::runtime_error("Can't create account with negative value.");
 	int id = clientAccounts_.size();
-	Account* newAccount = new Account(id, value);
+	int amount = static_cast<int>(value * 0.95);
+	Account* newAccount = new Account(id, amount);
+	liquidity_ += value;
 	clientAccounts_.push_back(newAccount);
 	return (newAccount);
 }
 
 void	Bank::deleteAccount(int id)
 {
-	if (invalidId(id) || isClosed(id))
-		return ;
+	checkInvalidId(id);
+	checkIsClosed(id);
 	clientAccounts_[id]->id_ *= -1;
 }
 
 void	Bank::deposit(int id, int value)
 {
-	if (invalidId(id) || isClosed(id))
-		return ;
-	if (value > 0)
-	{
-		int amount = static_cast<int>(value * 0.95);
-		clientAccounts_[id]->value_ += amount;
-		liquidity_ += value;
-	}
-	else
-		std::cerr << "Invalid deposit amount" << std::endl;
+	if (value <= 0)
+		throw std::runtime_error("Invalid deposit amount");
+	checkInvalidId(id);
+	checkIsClosed(id);
+	int amount = static_cast<int>(value * 0.95);
+	clientAccounts_[id]->value_ += amount;
+	liquidity_ += value;
 }
 
 void	Bank::withdraw(int id, int value)
 {
-	if (invalidId(id))
-		return ;
-	if (value > 0)
-	{
-		if (value > getBalance(id))
-			std::cerr << "Insufficient funds" << std::endl;
-		else
-		{
-			clientAccounts_[id]->value_ -= value;
-			liquidity_ -= value;
-		}
-	}
-	else
-		std::cerr << "Invalid withdraw amount" << std::endl;
+	if (value <= 0)
+		throw std::runtime_error("Invalid withdraw amount");
+	checkInvalidId(id);
+	if (value > getBalance(id))
+		throw std::runtime_error("Insufficient funds");
+	clientAccounts_[id]->value_ -= value;
+	liquidity_ -= value;
 }
 
 void	Bank::loan(int id, int loaned_amount)
 {
-	if (invalidId(id) || isClosed(id))
-		return ;
-	if (loaned_amount > 0 && loaned_amount > getLiquidity())
-	{
-		deposit(id, loaned_amount);
-		liquidity_ -= loaned_amount;
-	}
-	else
-		std::cerr << "Cannot loan that amount" << std::endl;
+	checkInvalidId(id);
+	checkIsClosed(id);
+	if (loaned_amount <= 0 || loaned_amount > getLiquidity())
+		throw std::runtime_error("Cannot loan that amount");
+	deposit(id, loaned_amount);
+	liquidity_ -= loaned_amount;
 }
 
 int	Bank::getLiquidity(void) const
@@ -96,29 +81,20 @@ int	Bank::getLiquidity(void) const
 
 int	Bank::getBalance(int id) const
 {
-	if (invalidId(id))
-		return (-1);
+	checkInvalidId(id);
 	return (clientAccounts_[id]->value_);
 }
 
-bool	Bank::invalidId(int id) const
+void	Bank::checkInvalidId(int id) const
 {
 	if (id < 0 || id >= (int)clientAccounts_.size())
-	{
-		std::cerr << "Invalid account ID" << std::endl;
-		return (true);
-	}
-	return (false);
+		throw std::runtime_error("Invalid account ID");
 }
 
-bool	Bank::isClosed(int id) const
+void	Bank::checkIsClosed(int id) const
 {
 	if (clientAccounts_[id]->getId() < 0)
-	{
-		std::cerr << "Account ID is closed" << std::endl;
-		return (true);
-	}
-	return (false);	
+		throw std::runtime_error("Account ID is closed");
 }
 
 std::ostream& operator<<(std::ostream& p_os, const Bank& p_bank)
