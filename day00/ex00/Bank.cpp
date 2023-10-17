@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:45:38 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 14:26:57 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 17:00:22 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Bank::~Bank(void)
 {
 	for (std::vector<Account*>::iterator it = clientAccounts_.begin();\
 	 it != clientAccounts_.end(); ++it)
-        delete *it;
+		delete *it;
 }
 
 Account*	Bank::createAccount(int value)
