@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:04:01 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 14:33:11 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:35:51 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ int main(void)
 
 	bank.deposit(accountA->getId(), 999);
 	bank.deposit(accountA->getId(), 400);
+	bank.deleteAccount(accountC->getId());
+	bank.withdraw(accountC->getId(), 95);
+	bank.loan(accountB->getId(), 1000);
+
 	try
 	{
 		bank.deposit(accountC->getId(), -99);
@@ -42,7 +46,6 @@ int main(void)
 	{
 		std::cerr << "Error: " << e.what() << std::endl;
 	}
-	bank.deleteAccount(accountC->getId());
 	try
 	{
 		bank.deposit(accountC->getId() + 1, 100);
@@ -75,7 +78,6 @@ int main(void)
 	{
 		std::cerr << "Error: " << e.what() << std::endl;
 	}
-	bank.withdraw(accountC->getId(), 95);
 	try
 	{
 		bank.loan(accountB->getId(), 2000);
@@ -84,7 +86,6 @@ int main(void)
 	{
 		std::cerr << "Error: " << e.what() << "\n" << std::endl;
 	}
-	bank.loan(accountB->getId(), 1000);
 
 	std::cout << "Account: " << std::endl;
 	std::cout << *accountA << std::endl;
