@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:45:38 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/16 23:35:34 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 07:21:11 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,13 @@ Bank::~Bank(void)
 
 Account*	Bank::createAccount(int value)
 {
-	static int	nextId;
-
 	if (value < 0)
 	{
 		std::cout << "Can't create account with negative value." << std::endl;
 		return (NULL);
 	}
-	Account* newAccount = new Account(nextId++, value);
+	int id = clientAccounts.size();
+	Account* newAccount = new Account(id, value);
 	clientAccounts.push_back(newAccount);
 	return (newAccount);
 }
@@ -42,7 +41,7 @@ void	Bank::deleteAccount(int id)
 {
 	if (invalidId(id) || isClosed(id))
 		return ;
-	clientAccounts[id]->setId(-id);
+	clientAccounts[id]->m_id *= -1;
 }
 
 void	Bank::deposit(int id, int value)
@@ -52,8 +51,7 @@ void	Bank::deposit(int id, int value)
 	if (value > 0)
 	{
 		int amount = static_cast<int>(value * 0.95)
-		amount += getBalance(id);
-		clientAccounts[id]->setValue(amount);
+		clientAccounts[id]->m_value += amount;
 	}
 	else
 		std::cout << "Invalid deposit amount" << std::endl;
@@ -63,10 +61,9 @@ void	Bank::withdraw(int id, int value)
 {
 	if (invalidId(id))
 		return ;
-	int	balance = getBalance(id);
-	if (value > 0 && value <= balance)
+	if (value > 0 && value <= getBalance(id))
 	{
-		clientAccounts[id]->setValue(balance - value);
+		clientAccounts[id]->m_value -= value;
 	}
 }
 
