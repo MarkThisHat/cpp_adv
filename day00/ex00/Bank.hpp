@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:54:12 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 10:26:10 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:33:24 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Bank
 {
 	private:
 		int		liquidity_;
-		std::vector<Account *> clientAccounts;
+		std::vector<Account *> clientAccounts_;
 
 		bool	invalidId(int id) const;
 		bool	isClosed(int id) const;
@@ -41,7 +41,7 @@ class Bank
 
 		void		loan(int id, int loaned_amount);
 
-		int			getLiqudity(void) const;
+		int			getLiquidity(void) const;
 		int			getBalance(int id) const;
 };
 
