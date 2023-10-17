@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:45:38 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 07:21:11 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 07:43:33 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Account*	Bank::createAccount(int value)
 {
 	if (value < 0)
 	{
-		std::cout << "Can't create account with negative value." << std::endl;
+		std::cerr << "Can't create account with negative value." << std::endl;
 		return (NULL);
 	}
 	int id = clientAccounts.size();
@@ -52,9 +52,10 @@ void	Bank::deposit(int id, int value)
 	{
 		int amount = static_cast<int>(value * 0.95)
 		clientAccounts[id]->m_value += amount;
+		liquidity += value;
 	}
 	else
-		std::cout << "Invalid deposit amount" << std::endl;
+		std::cerr << "Invalid deposit amount" << std::endl;
 }
 
 void	Bank::withdraw(int id, int value)
@@ -64,14 +65,40 @@ void	Bank::withdraw(int id, int value)
 	if (value > 0 && value <= getBalance(id))
 	{
 		clientAccounts[id]->m_value -= value;
+		liquidity -= value;
 	}
+}
+
+void	loan(int id, int loaned_amount)
+{
+	if (invalidId(id) || isClosed(id))
+		return ;
+	if (loaned_amount > 0 && loaned_amount > liquidity)
+	{
+		deposit(id, loaned_amount);
+		liquidity -= loaned_amount;
+	}
+	else
+		std::cerr << "Cannot loan that amount" << std::endl;
+}
+
+int	getLiqudity(void) const
+{
+	return (liquidity);
+}
+
+int	getBalance(int id) const
+{
+	if (invalidId(id))
+		return (-1);
+	return (clientAccounts[id]->m_value);
 }
 
 bool	Bank::invalidId(int id) const
 {
 	if (id < 0 || id >= clientAccounts.size())
 	{
-		std::cout << "Invalid account ID" << std::endl;
+		std::cerr << "Invalid account ID" << std::endl;
 		return (true);
 	}
 	return (false);
@@ -81,7 +108,7 @@ bool	Bank::isClosed(int id) const
 {
 	if (clientAccounts[id]->getId() < 0)
 	{
-		std::cout << "Account ID is closed" << std::endl;
+		std::cerr << "Account ID is closed" << std::endl;
 		return (true);
 	}
 	return (false);	
