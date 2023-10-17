@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:45:38 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 11:40:56 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:45:27 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ Account*	Bank::createAccount(int value)
 
 void	Bank::deleteAccount(int id)
 {
-	checkInvalidId(id);
-	checkIsClosed(id);
+	checkValidId(id);
+	checkIsOpen(id);
 	clientAccounts_[id]->id_ *= -1;
 }
 
@@ -46,8 +46,8 @@ void	Bank::deposit(int id, int value)
 {
 	if (value <= 0)
 		throw std::runtime_error("Invalid deposit amount");
-	checkInvalidId(id);
-	checkIsClosed(id);
+	checkValidId(id);
+	checkIsOpen(id);
 	int amount = static_cast<int>(value * 0.95);
 	clientAccounts_[id]->value_ += amount;
 	liquidity_ += value;
@@ -57,7 +57,7 @@ void	Bank::withdraw(int id, int value)
 {
 	if (value <= 0)
 		throw std::runtime_error("Invalid withdraw amount");
-	checkInvalidId(id);
+	checkValidId(id);
 	if (value > getBalance(id))
 		throw std::runtime_error("Insufficient funds");
 	clientAccounts_[id]->value_ -= value;
@@ -66,8 +66,8 @@ void	Bank::withdraw(int id, int value)
 
 void	Bank::loan(int id, int loaned_amount)
 {
-	checkInvalidId(id);
-	checkIsClosed(id);
+	checkValidId(id);
+	checkIsOpen(id);
 	if (loaned_amount <= 0 || loaned_amount > getLiquidity())
 		throw std::runtime_error("Cannot loan that amount");
 	deposit(id, loaned_amount);
@@ -81,17 +81,17 @@ int	Bank::getLiquidity(void) const
 
 int	Bank::getBalance(int id) const
 {
-	checkInvalidId(id);
+	checkValidId(id);
 	return (clientAccounts_[id]->value_);
 }
 
-void	Bank::checkInvalidId(int id) const
+void	Bank::checkValidId(int id) const
 {
 	if (id < 0 || id >= (int)clientAccounts_.size())
 		throw std::runtime_error("Invalid account ID");
 }
 
-void	Bank::checkIsClosed(int id) const
+void	Bank::checkIsOpen(int id) const
 {
 	if (clientAccounts_[id]->getId() < 0)
 		throw std::runtime_error("Account ID is closed");
