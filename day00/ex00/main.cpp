@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:04:01 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 13:26:50 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:33:11 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(void)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cerr << "\nError: " << e.what() << std::endl;
 	}
 
 	accountA = bank.createAccount(100);
@@ -57,8 +57,35 @@ int main(void)
 	}
 	catch(const std::exception& e)
 	{
+		std::cerr << "Error: " << e.what() << std::endl;
+	}
+	try
+	{
+		bank.withdraw(accountC->getId(), -100);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Error: " << e.what() << std::endl;
+	}
+	try
+	{
+		bank.withdraw(accountC->getId(), 100);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Error: " << e.what() << std::endl;
+	}
+	bank.withdraw(accountC->getId(), 95);
+	try
+	{
+		bank.loan(accountB->getId(), 2000);
+	}
+	catch(const std::exception& e)
+	{
 		std::cerr << "Error: " << e.what() << "\n" << std::endl;
 	}
+	bank.loan(accountB->getId(), 1000);
+
 	std::cout << "Account: " << std::endl;
 	std::cout << *accountA << std::endl;
 	std::cout << *accountB << std::endl;
