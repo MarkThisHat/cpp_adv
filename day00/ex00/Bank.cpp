@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:45:38 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 11:45:27 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:13:10 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ std::ostream& operator<<(std::ostream& p_os, const Bank& p_bank)
 	p_os << "Liquidity : " << p_bank.liquidity_ << std::endl;
 	for (std::vector<Account*>::const_iterator it = p_bank.clientAccounts_.begin();\
 	 it != p_bank.clientAccounts_.end(); ++it)
-		p_os << **it << std::endl;
+		if ((*it)->getId() >= 0)
+			p_os << **it << std::endl;
 	return (p_os);
 }
