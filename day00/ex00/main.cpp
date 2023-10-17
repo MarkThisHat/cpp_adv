@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:04:01 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 10:29:12 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:42:57 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,22 @@
 
 int main(void)
 {
-	Account accountA = Account();
-	accountA.id = 0;
-	accountA.value = 100;
+	Bank bank;
 
-	Account accountB = Account();
-	accountB.id = 1;
-	accountB.value = 100;
+	Account* accountA = bank.createAccount(100);
+	Account* accountB = bank.createAccount(100);
 
-	Bank bank = Bank();
-	bank.liquidity = 999;
-	bank.clientAccounts.push_back(&accountA);
-	bank.clientAccounts.push_back(&accountB);
-
-	bank.liquidity -= 200;
-	accountA.value += 400;
+	bank.deposit(accountA->getId(), 999); 
+	bank.deposit(accountA->getId(), 400); 
 
 	std::cout << "Account : " << std::endl;
-	std::cout << accountA << std::endl;
-	std::cout << accountB << std::endl;
+	std::cout << *accountA << std::endl;
+	std::cout << *accountB << std::endl;
 
 	std::cout << " ----- " << std::endl;
 
 	std::cout << "Bank : " << std::endl;
 	std::cout << bank << std::endl;
 
-	return (0);
+	return 0;
 }

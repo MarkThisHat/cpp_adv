@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:18:26 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 10:32:32 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:50:38 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ class Account
 		Account(int	id, int value);
 
 		friend class Bank;
+
+		friend std::ostream& operator<<(std::ostream& os, const Account& account);
 
 	public:
 		~Account(void);

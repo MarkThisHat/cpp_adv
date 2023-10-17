@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:45:38 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 10:37:23 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:50:19 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,13 +121,7 @@ bool	Bank::isClosed(int id) const
 	return (false);	
 }
 
-friend std::ostream& operator << (std::ostream& p_os, const Account& p_account)
-{
-	p_os << "[" << p_account.id_ << "] - [" << p_account.value_ << "]";
-	return (p_os);
-}
-
-friend std::ostream& operator << (std::ostream& p_os, const Bank& p_bank)
+friend std::ostream& operator<<(std::ostream& p_os, const Bank& p_bank)
 {
 	p_os << "Bank informations : " << std::endl;
 	p_os << "Liquidity : " << p_bank.liquidity_ << std::endl;
