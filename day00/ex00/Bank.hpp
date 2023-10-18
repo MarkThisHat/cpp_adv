@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:54:12 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/18 12:28:37 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:35:33 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class Bank
 
 		int				getLiquidity(void) const;
 		int				getBalance(int id) const;
-		const Account&	getId(int id) const;
+		const Account&	getById(int id) const;
 };
 
 #endif
