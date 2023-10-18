@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Graph.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 16:47:35 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/18 14:26:36 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/18 14:00:12 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/18 14:33:52 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GRAPH_HPP
-# define GRAPH_HPP
+#include "Graph.hpp"
 
-# include <vector>
-# include "Vector2.hpp"
-
-class Graph 
+int	main(void)
 {
-	private:
-		Vector2	size_;
-		std::vector<Vector2>	points_;
+	Vector2	boundries(7, 7);
 
-	public:
-		Graph(const Vector2& size) : 
-		size_(size)
-		{}
-		~Graph(void) {}
+	Graph graph(boundries);
 
-	void addPoint(const Vector2& point);
-	void display() const;
-	bool pointExists(int x, int y) const;
-	void drawRow(int y) const;
-	void drawFooter() const;
-};
+	graph.addPoint(Vector2(0, 0));
+	graph.addPoint(Vector2(2, 2));
+	graph.addPoint(Vector2(4, 2));
+	graph.addPoint(Vector2(6, 3));
+	graph.addPoint(Vector2(2, 4));
+	graph.addPoint(Vector2(4, 7));
+	graph.addPoint(Vector2(8, 7));
 
-#endif
+	graph.display();
+
+	return 0;
+}
