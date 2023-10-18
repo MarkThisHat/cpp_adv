@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 20:54:12 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/18 10:15:57 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:28:37 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ class Bank
 		Bank(void);
 		~Bank(void);
 
-		Account*	createAccount(int value);
-		void		deleteAccount(int id);
+		Account*		createAccount(int value);
+		void			deleteAccount(int id);
 
-		void		deposit(int id, int value);
-		void		withdraw(int id, int value);
+		void			deposit(int id, int value);
+		void			withdraw(int id, int value);
 
-		void		loan(int id, int loaned_amount);
+		void			loan(int id, int loaned_amount);
 
-		int			getLiquidity(void) const;
-		int			getBalance(int id) const;
-		int			getId(int id) const;
+		int				getLiquidity(void) const;
+		int				getBalance(int id) const;
+		const Account&	getId(int id) const;
 };
 
 #endif
