@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:45:38 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/17 17:00:22 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:16:26 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,12 @@ int	Bank::getBalance(int id) const
 {
 	checkValidId(id);
 	return (clientAccounts_[id]->value_);
+}
+
+int			getId(int id) const
+{
+	checkValidId(id);
+	return (clientAccounts_[id]->id_);
 }
 
 void	Bank::checkValidId(int& id) const

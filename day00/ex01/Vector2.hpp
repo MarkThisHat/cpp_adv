@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Graph.hpp                                          :+:      :+:    :+:   */
+/*   Vector2.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 16:47:35 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/18 10:00:21 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/18 10:00:02 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/18 10:00:53 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GRAPH_HPP
-# define GRAPH_HPP
-
-# include <vector>
-# include Vector2.hpp
-
-class Graph 
+struct Vector2
 {
-	private:
-		Vector2	size_;
-		std::vector<Vector2>	points_;
+	float	x;
+	float	y;
 
-	public:
-		Graph(const Vector2& size);
-}
-
-#endif
+	Vector2(float x = 0, float y = 0) : 
+	x(x), 
+	y(y) 
+	{}
+};
