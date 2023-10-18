@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 14:00:12 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/18 14:33:52 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/18 14:58:49 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ int	main(void)
 
 	graph.display();
 
-	return 0;
+	return (0);
 }
