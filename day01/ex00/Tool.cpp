@@ -6,43 +6,39 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:40:23 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/18 23:03:21 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:32:17 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Tool.hpp"
+#include <cstring>
 
 Tool::Tool() :
 numberOfUses(DEFAULT_USES),
-porter(nullptr)
+porter(NULL)
 {}
 
 Tool::Tool(int uses) :
 numberOfUses(uses),
-porter(nullptr)
+porter(NULL)
 {}
 
 Tool::~Tool()
 {}
 
-virtual int	Tool::use()
+void	Tool::setPorter(Worker* w)
 {
-	if (!getPorter())
-		return (UNCARRIED);
-	if (numberOfUses)
-		return (numberOfUses--);
-	else
-		return (BROKEN);
-}
-
-Tool::setPorter(Worker* w)
-{
-	if (porter != nullptr)
-		youLostItBro(porter);
+	if (porter != NULL)
+		changeCarrier(porter);
 	porter = w;
 }
 
-Worker* getPorter() const
+Worker* Tool::getPorter() const
 {
-	return (porter);
+	return porter;
+}
+
+void	Tool::changeCarrier(Worker* priorWorker)
+{
+	priorWorker->releaseTool(this);
 }

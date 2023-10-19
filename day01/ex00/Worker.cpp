@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:15:22 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/18 22:23:46 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:50:30 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,16 @@
 Worker::Worker(void)
 {}
 
-Worker::Worker(Shovel* oneShovel) :
-shovel(oneShovel)
-{}
-
 Worker::~Worker(void)
 {}
 
-bool Worker::dropShovel(void)
+void Worker::releaseTool(Tool* tool)
 {
-	if (shovel == nullptr)
-		return (false);
-	shovel = nullptr;
-	return (true);
+	std::vector<Tool*>::iterator it =\
+	 std::find(tools.begin(), tools.end(), tool);
+	if (it != tools.end())
+	{
+		tools.erase(it);
+		return ;
+	}
 }
