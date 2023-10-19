@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:36:43 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/19 11:31:00 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:16:53 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,14 @@ class	Tool
 		Worker* porter;
 
 		void	changeCarrier(Worker* priorWorker);
+
 	public:
 		virtual	~Tool(void);
 		virtual int	use() = 0;
 		
 		Tool();
 		Tool(int uses);
-		void	setPorter(Worker* w);
+		void	setPorter(Worker* worker);
 		Worker*	getPorter(void) const;
 };
 

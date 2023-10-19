@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:40:23 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/19 11:32:17 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:16:48 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ porter(NULL)
 Tool::~Tool()
 {}
 
-void	Tool::setPorter(Worker* w)
+void	Tool::setPorter(Worker* worker)
 {
+	if (getPorter() == worker)
+		return ;
 	if (porter != NULL)
 		changeCarrier(porter);
-	porter = w;
+	porter = worker;
 }
 
 Worker* Tool::getPorter() const
