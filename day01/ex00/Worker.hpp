@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:53:58 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/19 12:37:04 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:53:15 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include <vector>
 # include <algorithm>
 # include <stdexcept>
-# include "Tool.hpp"
+
+class Tool;
 
 struct Position
 {
@@ -40,6 +41,8 @@ class Worker
 
 	public:
 		Worker(void);
+		Worker(Tool* tool1);
+		Worker(Tool* tool1, Tool* tool2);
 		~Worker(void);
 
 		void	releaseTool(Tool* tool);

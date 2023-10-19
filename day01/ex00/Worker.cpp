@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:15:22 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/19 12:38:17 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:53:58 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 
 Worker::Worker(void)
 {}
+
+Worker::Worker(Tool* tool1)
+{
+	tools.push_back(tool1);
+}
+
+Worker::Worker(Tool* tool1, Tool* tool2)
+{
+	tools.push_back(tool1);
+	tools.push_back(tool2);
+}
 
 Worker::~Worker(void)
 {}
