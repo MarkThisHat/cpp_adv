@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Graph.hpp                                          :+:      :+:    :+:   */
+/*   Worker.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 16:47:35 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/18 22:17:50 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/18 22:15:22 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/18 22:23:46 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GRAPH_HPP
-# define GRAPH_HPP
+#include "Worker.hpp"
 
-# include <vector>
-# include "Vector2.hpp"
+Worker::Worker(void)
+{}
 
-class Graph 
+Worker::Worker(Shovel* oneShovel) :
+shovel(oneShovel)
+{}
+
+Worker::~Worker(void)
+{}
+
+bool Worker::dropShovel(void)
 {
-	private:
-		Vector2	size_;
-		std::vector<Vector2>	points_;
-
-		bool pointExists(int x, int y) const;
-		void drawRow(int y) const;
-		void drawFooter() const;
-	
-	public:
-		Graph(const Vector2& size);
-		~Graph(void) {}
-
-	void addPoint(const Vector2& point);
-	void display() const;
-};
-
-#endif
+	if (shovel == nullptr)
+		return (false);
+	shovel = nullptr;
+	return (true);
+}

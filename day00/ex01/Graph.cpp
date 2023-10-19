@@ -6,12 +6,16 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:51:49 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/18 14:28:49 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/18 22:49:21 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Graph.hpp"
 #include <iostream>
+
+Graph::Graph(const Vector2& size) : 
+size_(size)
+{}
 
 void	Graph::addPoint(const Vector2& point)
 {

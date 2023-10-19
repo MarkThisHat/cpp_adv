@@ -1,37 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Graph.hpp                                          :+:      :+:    :+:   */
+/*   Shovel.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 16:47:35 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/18 22:17:50 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/18 22:29:24 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/18 22:29:53 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GRAPH_HPP
-# define GRAPH_HPP
+Shovel::Shovel(void)
+{}
 
-# include <vector>
-# include "Vector2.hpp"
-
-class Graph 
-{
-	private:
-		Vector2	size_;
-		std::vector<Vector2>	points_;
-
-		bool pointExists(int x, int y) const;
-		void drawRow(int y) const;
-		void drawFooter() const;
-	
-	public:
-		Graph(const Vector2& size);
-		~Graph(void) {}
-
-	void addPoint(const Vector2& point);
-	void display() const;
-};
-
-#endif
+Shovel::~Shovel(void);

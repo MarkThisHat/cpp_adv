@@ -1,37 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Graph.hpp                                          :+:      :+:    :+:   */
+/*   Worker.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 16:47:35 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/18 22:17:50 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/18 21:53:58 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/18 22:28:10 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GRAPH_HPP
-# define GRAPH_HPP
+#ifndef WORKER_HPP
+# define WORKER_HPP
 
-# include <vector>
-# include "Vector2.hpp"
+struct Position
+{
+	int	x;
+	int	y;
+	int	z;
+};
 
-class Graph 
+struct Statistic
+{
+	int	level;
+	int	exp;
+};
+
+class Worker
 {
 	private:
-		Vector2	size_;
-		std::vector<Vector2>	points_;
+		Position	coordonnee;
+		Statistic	stat;
+		Shovel*		shovel;
 
-		bool pointExists(int x, int y) const;
-		void drawRow(int y) const;
-		void drawFooter() const;
-	
 	public:
-		Graph(const Vector2& size);
-		~Graph(void) {}
+		Worker(void);
+		Worker(Shovel* oneShovel);
+		~Worker(void)
 
-	void addPoint(const Vector2& point);
-	void display() const;
+		bool	pickShovel(Shovel* oneShovel);
+		bool	dropShovel(void);
 };
 
 #endif

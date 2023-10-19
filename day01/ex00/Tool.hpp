@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Graph.hpp                                          :+:      :+:    :+:   */
+/*   Tool.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 16:47:35 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/18 22:17:50 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/18 22:36:43 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/18 23:06:52 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GRAPH_HPP
-# define GRAPH_HPP
+#ifndef TOOL_HPP
+# define TOOL_HPP
 
-# include <vector>
-# include "Vector2.hpp"
-
-class Graph 
+enum	ToolStatus
 {
-	private:
-		Vector2	size_;
-		std::vector<Vector2>	points_;
-
-		bool pointExists(int x, int y) const;
-		void drawRow(int y) const;
-		void drawFooter() const;
-	
-	public:
-		Graph(const Vector2& size);
-		~Graph(void) {}
-
-	void addPoint(const Vector2& point);
-	void display() const;
+	DEFAULT_USES = 42,		
+	UNCARRIED = -1,
+	BROKEN = -2
 };
 
-#endif
+class	Tool
+{
+	protected:
+		int numberOfUses;
+		Worker* porter;
+
+	public:
+		virtual int use(void);
+		virtual ~Tool(void);
+
+		void setPorter(Worker* w);
+		Worker* getPorter(void) const;
+};
