@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:51:49 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/18 22:49:21 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:20:15 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	Graph::display() const
 {
 	int y = static_cast<int>(size_.y);
 
-	while (y)
+	while (y >= 0)
 		drawRow(y--);
 	drawFooter();
 }
