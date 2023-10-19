@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:53:58 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/19 11:47:40 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:37:04 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define WORKER_HPP
 
 # include <vector>
-#include <algorithm>
+# include <algorithm>
+# include <stdexcept>
 # include "Tool.hpp"
 
 struct Position
