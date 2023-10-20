@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:36:43 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/19 14:16:53 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:15:07 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ enum	ToolStatus
 class	Tool
 {
 	protected:
-		int numberOfUses;
-		Worker* porter;
+		int 		numberOfUses;
+		Worker* 	porter;
+		ToolType	type;
 
 		void	changeCarrier(Worker* priorWorker);
 
@@ -36,20 +37,10 @@ class	Tool
 		
 		Tool();
 		Tool(int uses);
-		void	setPorter(Worker* worker);
-		Worker*	getPorter(void) const;
+
+		void		setPorter(Worker* worker);
+		Worker*		getPorter() const;
+		ToolType	getType() const;
 };
 
 #endif
-
-/*
-virtual int	Tool::use()
-{
-	if (!getPorter())
-		return (UNCARRIED);
-	if (numberOfUses)
-		return (numberOfUses--);
-	else
-		return (BROKEN);
-}
-*/

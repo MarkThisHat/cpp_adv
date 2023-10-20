@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:53:58 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:35:58 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:01:31 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include <stdexcept>
 
 class Tool;
+
+enum	ToolType
+{
+	SHOVEL,
+	HAMMER
+};
 
 struct Position
 {
@@ -46,6 +52,7 @@ class Worker
 		~Worker(void);
 
 		void	releaseTool(Tool* tool);
+		Tool*	getTool(ToolType type) const 
 };
 
 #endif

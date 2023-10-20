@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:40:23 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/19 14:16:48 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:21:34 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 
 Tool::Tool() :
 numberOfUses(DEFAULT_USES),
-porter(NULL)
+porter(NULL),
+type(0)
 {}
 
 Tool::Tool(int uses) :
 numberOfUses(uses),
 porter(NULL)
+type(0)
 {}
 
 Tool::~Tool()
@@ -43,4 +45,9 @@ Worker* Tool::getPorter() const
 void	Tool::changeCarrier(Worker* priorWorker)
 {
 	priorWorker->releaseTool(this);
+}
+
+ToolType	Tool::getType() const
+{
+	return type;
 }

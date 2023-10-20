@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:15:22 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/19 12:53:58 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:10:23 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,15 @@ void	Worker::releaseTool(Tool* tool)
 		tools.erase(it);
 	else
 		throw std::runtime_error("Tool not in worker's possession");
+}
+
+Tool*	Worker::getTool(ToolType type) const
+{
+	for (std::vector<Tool*>::const_iterator it =\
+	 tools.begin(); it != tools.end(); ++it)
+	{
+		if ((*it)->getType() == type)
+			return *it;
+	}
+	return NULL;
 }
