@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:36:43 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:49:16 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:36:49 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ enum	ToolStatus
 class	Tool
 {
 	protected:
-		int 		numberOfUses;
-		Worker* 	porter;
+		int			numberOfUses;
+		Worker*		porter;
 		ToolType	type;
 
 	public:
 		virtual	~Tool();
 		virtual int	use() = 0;
-		
+
 		Tool(ToolType t);
 		Tool(ToolType t, int uses);
 

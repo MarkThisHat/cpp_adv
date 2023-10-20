@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:15:22 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/20 17:01:53 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:51:45 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,26 @@
 Worker::Worker(void)
 {}
 
-Worker::Worker(Tool* tool1)
+Worker::Worker(const std::vector<Tool*>& toolsList)
 {
-	tools.push_back(tool1);
-	tool1->setPorter(this);
-}
-
-Worker::Worker(Tool* tool1, Tool* tool2)
-{
-	tools.push_back(tool1);
-	tool1->setPorter(this);
-	tools.push_back(tool2);
-	tool2->setPorter(this);
+	for (std::vector<Tool*>::const_iterator it = toolsList.begin();\
+	 it != toolsList.end(); it++)
+		addTool(*it);
 }
 
 Worker::~Worker(void)
 {}
+
+void	Worker::addTool(Tool* tool)
+{
+	if (std::find(tools.begin(), tools.end(), tool) == tools.end())
+	{
+		tools.push_back(tool);
+		tool->setPorter(this);
+	}
+	else 
+		throw std::runtime_error("Worker is already holding this tool");
+}
 
 void	Worker::releaseTool(Tool* tool)
 {
