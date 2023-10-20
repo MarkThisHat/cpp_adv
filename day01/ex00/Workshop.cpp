@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:30:17 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/20 12:08:15 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:37:07 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,36 @@ void	Workshop::releaseWorker(Worker* worker)
 		throw std::runtime_error("Worker not registered in this workshop");
 }
 
-void Workshop::registerWorker(Worker* worker)
+void	Workshop::registerWorker(Worker* worker)
 {
-	for (std::vector<ToolType>::iterator it = requiredToolTypes.begin();
-		it != requiredToolTypes.end(); ++it) {
-		if (!worker->hasTool(*it)) {
-			return;  // Worker doesn't have all required tools
+	if (requiredToolTypes.size())
+	{
+		for (std::vector<ToolType>::iterator it = requiredToolTypes.begin();\
+		it != requiredToolTypes.end(); ++it) 
+		{
+			if (worker->getTool(*it) == NULL) 
+				return;
 		}
 	}
 	registeredWorkers.push_back(worker);
 	worker->registerWorkshop(this);
+}
+
+void Workshop::registerWorker(Worker* worker)
+{
+	if (worker->isRegisteredTo(this))
+		return;
+	for (std::vector<ToolType>::iterator it =\
+	 requiredToolTypes.begin(); it != requiredToolTypes.end(); ++it)
+	{
+		if (worker->getTool(*it) == NULL)
+			throw std::runtime_error("Worker lacks required tools.");
+	}
+	this->addWorker(worker);
+	worker->registerToWorkshop(this);
+}
+
+void Workshop::addWorker(Worker* worker)
+{
+	registeredWorkers.push_back(worker);
 }

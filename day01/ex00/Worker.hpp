@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:53:58 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/20 12:01:31 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:37:41 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <algorithm>
 # include <stdexcept>
 
-class Tool;
+class	Tool;
+class	Workshop;
 
 enum	ToolType
 {
@@ -25,14 +26,14 @@ enum	ToolType
 	HAMMER
 };
 
-struct Position
+struct	Position
 {
 	int	x;
 	int	y;
 	int	z;
 };
 
-struct Statistic
+struct	Statistic
 {
 	int	level;
 	int	exp;
@@ -43,7 +44,11 @@ class Worker
 	private:
 		Position	coordonnee;
 		Statistic	stat;
-		std::vector<Tool*>	tools;
+
+		std::vector<Tool*>		tools;
+		std::vector<Workshop*>	workshops;
+
+		void addWorkshop(Workshop* workshop);
 
 	public:
 		Worker(void);
@@ -52,7 +57,9 @@ class Worker
 		~Worker(void);
 
 		void	releaseTool(Tool* tool);
-		Tool*	getTool(ToolType type) const 
+		bool	isRegisteredTo(const Workshop* workshop) const;
+		void	registerToWorkshop(Workshop* workshop);
+		Tool*	getTool(ToolType type) const;
 };
 
 #endif

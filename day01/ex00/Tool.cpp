@@ -6,23 +6,23 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:40:23 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/20 12:21:34 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:47:37 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Tool.hpp"
 #include <cstring>
 
-Tool::Tool() :
+Tool::Tool(ToolType t) :
 numberOfUses(DEFAULT_USES),
 porter(NULL),
-type(0)
+type(t)
 {}
 
-Tool::Tool(int uses) :
+Tool::Tool(ToolType t, int uses) :
 numberOfUses(uses),
 porter(NULL)
-type(0)
+type(t)
 {}
 
 Tool::~Tool()
@@ -33,18 +33,13 @@ void	Tool::setPorter(Worker* worker)
 	if (getPorter() == worker)
 		return ;
 	if (porter != NULL)
-		changeCarrier(porter);
+		porter->releaseTool(this);
 	porter = worker;
 }
 
 Worker* Tool::getPorter() const
 {
 	return porter;
-}
-
-void	Tool::changeCarrier(Worker* priorWorker)
-{
-	priorWorker->releaseTool(this);
 }
 
 ToolType	Tool::getType() const
