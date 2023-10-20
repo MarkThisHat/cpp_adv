@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:53:58 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:37:41 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:14:18 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ class Worker
 		std::vector<Tool*>		tools;
 		std::vector<Workshop*>	workshops;
 
-		void addWorkshop(Workshop* workshop);
+		void 	addWorkshop(Workshop* ws);
+
+		Position	getPosition();
+		Statistic	getStatistic();
 
 	public:
 		Worker(void);
@@ -57,8 +60,8 @@ class Worker
 		~Worker(void);
 
 		void	releaseTool(Tool* tool);
-		bool	isRegisteredTo(const Workshop* workshop) const;
-		void	registerToWorkshop(Workshop* workshop);
+		bool	isRegisteredTo(const Workshop* ws) const;
+		void	registerToWorkshop(Workshop* ws);
 		Tool*	getTool(ToolType type) const;
 };
 

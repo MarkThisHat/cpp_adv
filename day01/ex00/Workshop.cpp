@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:30:17 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:37:07 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:15:13 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,6 @@ void	Workshop::releaseWorker(Worker* worker)
 		registeredWorkers.erase(it);
 	else
 		throw std::runtime_error("Worker not registered in this workshop");
-}
-
-void	Workshop::registerWorker(Worker* worker)
-{
-	if (requiredToolTypes.size())
-	{
-		for (std::vector<ToolType>::iterator it = requiredToolTypes.begin();\
-		it != requiredToolTypes.end(); ++it) 
-		{
-			if (worker->getTool(*it) == NULL) 
-				return;
-		}
-	}
-	registeredWorkers.push_back(worker);
-	worker->registerWorkshop(this);
 }
 
 void Workshop::registerWorker(Worker* worker)

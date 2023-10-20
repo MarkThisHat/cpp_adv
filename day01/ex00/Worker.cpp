@@ -6,11 +6,13 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:15:22 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:52:13 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:14:03 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Worker.hpp"
+#include "Tool.hpp"
+#include "Workshop.hpp"
 
 Worker::Worker(void)
 {}
@@ -56,20 +58,31 @@ Tool*	Worker::getTool(ToolType type) const
 	return NULL;
 }
 
-bool	Worker::isRegisteredTo(const Workshop* workshop) const
+bool	Worker::isRegisteredTo(const Workshop* ws) const
 {
-	return std::find(workshop.begin(), workshop.end(), ws) != workshop.end();
+	return (std::find(workshops.begin(), workshops.end(), ws)\
+	 != workshops.end());
 }
 
-void	Worker::registerToWorkshop(Workshop* workshop)
+void	Worker::registerToWorkshop(Workshop* ws)
 {
-	if (this->isRegisteredTo(workshop))
+	if (this->isRegisteredTo(ws))
 		return;
-	this->addWorkshop(workshop);
-	workshop->registerWorker(this);
+	this->addWorkshop(ws);
+	ws->registerWorker(this);
 }
 
 void	Worker::addWorkshop(Workshop* workshop)
 {
 	workshops.push_back(workshop);
+}
+
+Position	Worker::getPosition()
+{
+	return coordonnee;
+}
+
+Statistic	Worker::getStatistic()
+{
+	return stat;
 }
