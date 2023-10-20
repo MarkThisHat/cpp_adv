@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:15:22 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/20 15:14:03 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:01:53 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,6 @@ void	Worker::releaseTool(Tool* tool)
 		throw std::runtime_error("Tool not in worker's possession");
 }
 
-Tool*	Worker::getTool(ToolType type) const
-{
-	for (std::vector<Tool*>::const_iterator it =\
-	 tools.begin(); it != tools.end(); ++it)
-	{
-		if ((*it)->getType() == type)
-			return *it;
-	}
-	return NULL;
-}
-
 bool	Worker::isRegisteredTo(const Workshop* ws) const
 {
 	return (std::find(workshops.begin(), workshops.end(), ws)\
@@ -75,6 +64,29 @@ void	Worker::registerToWorkshop(Workshop* ws)
 void	Worker::addWorkshop(Workshop* workshop)
 {
 	workshops.push_back(workshop);
+}
+
+template<>
+Tool*	Worker::getTool<SHOVEL>() const
+{
+	return getTemplatedTool(SHOVEL);
+}
+
+template<>
+Tool*	Worker::getTool<HAMMER>() const
+{
+	return getTemplatedTool(HAMMER);
+}
+
+Tool*	Worker::getTemplatedTool(ToolType type) const
+{
+	for (std::vector<Tool*>::const_iterator it =\
+	 tools.begin(); it != tools.end(); ++it)
+	{
+		if ((*it)->getType() == type)
+			return *it;
+	}
+	return NULL;
 }
 
 Position	Worker::getPosition()

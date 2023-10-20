@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:30:17 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/20 15:15:13 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:08:24 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,20 @@ void Workshop::registerWorker(Worker* worker)
 	if (worker->isRegisteredTo(this))
 		return;
 	for (std::vector<ToolType>::iterator it =\
-	 requiredToolTypes.begin(); it != requiredToolTypes.end(); ++it)
+	 requiredToolTypes.begin(); it != requiredToolTypes.end(); it++)
 	{
-		if (worker->getTool(*it) == NULL)
+		ToolType type = *it;
+		Tool* tool = NULL;
+		switch(type)
+		{
+			case SHOVEL:
+				tool = worker->getTool<SHOVEL>();
+				break;
+			case HAMMER:
+				tool = worker->getTool<HAMMER>();
+				break;
+		}
+		if (tool == NULL)
 			throw std::runtime_error("Worker lacks required tools.");
 	}
 	this->addWorker(worker);
