@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Hammer.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/19 10:10:36 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/20 10:26:56 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/18 22:28:30 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/20 10:30:39 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Tool.hpp"
-#include "Shovel.hpp"
-#include "Worker.hpp"
+#ifndef HAMMER_HPP
+# define HAMMER_HPP
 
-int	main(void)
+#include "Tool.hpp"
+
+class Hammer : public Tool
 {
-	Shovel tool;
-	(void) tool;
-}
+	public:
+		virtual int use();
+};
+
+#endif

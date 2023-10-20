@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Hammer.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/19 10:10:36 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/20 10:26:56 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/18 22:29:24 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/20 10:29:22 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Tool.hpp"
-#include "Shovel.hpp"
-#include "Worker.hpp"
+#include "Hammer.hpp"
 
-int	main(void)
+int	Hammer::use(void)
 {
-	Shovel tool;
-	(void) tool;
+	if (porter == NULL)
+		return (UNCARRIED);
+	if (numberOfUses)
+		return (numberOfUses--);
+	else
+		return (BROKEN);
 }

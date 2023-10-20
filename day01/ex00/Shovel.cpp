@@ -6,11 +6,18 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:29:24 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/18 22:29:53 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/20 10:30:11 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-Shovel::Shovel(void)
-{}
+#include "Shovel.hpp"
 
-Shovel::~Shovel(void);
+int	Shovel::use(void)
+{
+	if (porter == NULL)
+		return (UNCARRIED);
+	if (numberOfUses)
+		return (numberOfUses--);
+	else
+		return (BROKEN);
+}
