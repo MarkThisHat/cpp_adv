@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:15:22 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/20 17:51:45 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/21 11:44:54 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,14 @@ Worker::Worker(const std::vector<Tool*>& toolsList)
 }
 
 Worker::~Worker(void)
-{}
+{
+	while(!tools.empty())
+		releaseTool(tools.back());
+	for(std::vector<Workshop*>::iterator it = workshops.begin();\
+	 it != workshops.end(); ++it)
+		(*it)->releaseWorker(this);
+	workshops.clear();
+}
 
 void	Worker::addTool(Tool* tool)
 {
@@ -92,6 +99,12 @@ Tool*	Worker::getTemplatedTool(ToolType type) const
 	}
 	return NULL;
 }
+
+std::vector<Workshop*>& Worker::getWorkshops()
+{
+	return workshops;
+}
+
 
 Position	Worker::getPosition()
 {

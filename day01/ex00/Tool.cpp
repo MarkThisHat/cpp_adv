@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:40:23 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/20 15:01:06 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/21 11:40:07 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ type(t)
 {}
 
 Tool::~Tool()
-{}
+{
+	if (porter)
+		porter->releaseTool(this);
+}
 
 void	Tool::setPorter(Worker* worker)
 {

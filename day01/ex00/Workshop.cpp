@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:30:17 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/20 17:08:24 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/21 11:46:40 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,29 @@ Workshop::Workshop(ToolType type1, ToolType type2)
 	requiredToolTypes.push_back(type2);
 }
 
-void	Workshop::releaseWorker(Worker* worker)
+Workshop::~Workshop()
 {
-	std::vector<Worker*>::iterator it =\
-	 std::find(registeredWorkers.begin(), registeredWorkers.end(), worker);
+	for(std::vector<Worker*>::iterator it = registeredWorkers.begin();\
+	 it != registeredWorkers.end(); ++it)
+	{
+		std::vector<Workshop*>& workerWorkshops = (*it)->getWorkshops();
+		workerWorkshops.erase(std::remove(workerWorkshops.begin(),\
+		 workerWorkshops.end(), this), workerWorkshops.end());
+	}
+	registeredWorkers.clear();
+}
+
+void Workshop::releaseWorker(Worker* worker)
+{
+	std::vector<Worker*>::iterator it = \
+	std::find(registeredWorkers.begin(), registeredWorkers.end(), worker);
 	if (it != registeredWorkers.end())
+	{
+		std::vector<Workshop*>& workerWorkshops = worker->getWorkshops();
+		workerWorkshops.erase(std::remove(workerWorkshops.begin(),\
+		 workerWorkshops.end(), this), workerWorkshops.end());
 		registeredWorkers.erase(it);
+	}
 	else
 		throw std::runtime_error("Worker not registered in this workshop");
 }
