@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:53:58 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/22 10:09:29 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/22 17:28:09 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ class Worker
 		Position	coordonnee;
 		Statistic	stat;
 
+		static int	id;
+		
 		std::vector<Tool*>		tools;
 		std::vector<Workshop*>	workshops;
 
@@ -54,6 +56,7 @@ class Worker
 
 		Position	getPosition();
 		Statistic	getStatistic();
+		void		setLevel(int level);
 
 	public:
 		Worker(void);
@@ -67,6 +70,7 @@ class Worker
 		template<ToolType T>
 		Tool*	getTool() const;
 		std::vector<Workshop*>&	getWorkshops();
+		int		getLevel();
 };
 
 #endif

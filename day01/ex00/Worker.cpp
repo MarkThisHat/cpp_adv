@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:15:22 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/21 11:44:54 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/22 17:29:38 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,23 @@
 #include "Tool.hpp"
 #include "Workshop.hpp"
 
-Worker::Worker(void)
-{}
+int	Worker::id = 1;
+
+Worker::Worker()
+{
+	setLevel(id++);
+	std::cout << "Worker " << getLevel() << " created\n";
+}
 
 Worker::Worker(const std::vector<Tool*>& toolsList)
 {
+	setLevel(id++);
 	for (std::vector<Tool*>::const_iterator it = toolsList.begin();\
 	 it != toolsList.end(); it++)
 		addTool(*it);
 }
 
-Worker::~Worker(void)
+Worker::~Worker()
 {
 	while(!tools.empty())
 		releaseTool(tools.back());
@@ -105,6 +111,15 @@ std::vector<Workshop*>& Worker::getWorkshops()
 	return workshops;
 }
 
+int		Worker::getLevel()
+{
+	return stat.level;
+}
+
+void	Worker::setLevel(int level)
+{
+	stat.level = level;
+}
 
 Position	Worker::getPosition()
 {
