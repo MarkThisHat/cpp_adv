@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:53:58 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/21 11:39:29 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/22 10:09:29 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <vector>
 # include <algorithm>
 # include <stdexcept>
+# include <iostream>
 
 class	Tool;
 class	Workshop;
