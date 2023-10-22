@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:15:22 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/22 17:29:38 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/22 19:54:54 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,18 @@ void	Worker::releaseTool(Tool* tool)
 	 std::find(tools.begin(), tools.end(), tool);
 	if (it != tools.end())
 	{
+		ToolType type = (*it)->getType();
 		(*it)->setPorter(NULL);
+		std::cout << "Worker " << getLevel() << " dropped ";
+		if (type == SHOVEL)
+			std::cout << "shovel ";
+		else if (type == HAMMER)
+			std::cout <<"hammer ";
+		else
+			std::cout << "Unknown tool ";
+		std::cout << (*it)->getId() << std::endl;
 		tools.erase(it);
 	}
-	else
-		throw std::runtime_error("Tool not in worker's possession");
 }
 
 bool	Worker::isRegisteredTo(const Workshop* ws) const
@@ -111,7 +118,7 @@ std::vector<Workshop*>& Worker::getWorkshops()
 	return workshops;
 }
 
-int		Worker::getLevel()
+int		Worker::getLevel() const
 {
 	return stat.level;
 }
@@ -129,4 +136,29 @@ Position	Worker::getPosition()
 Statistic	Worker::getStatistic()
 {
 	return stat;
+}
+
+void Worker::printTools() const 
+{
+	std::cout << "Worker " << getLevel() << " ";
+	if (tools.empty())
+	{
+		std::cout << "has no tools." << std::endl;
+		return;
+	}
+	std::cout << "is holding:\n";
+    for (std::vector<Tool*>::const_iterator it = tools.begin(); it != tools.end(); it++)
+	{
+		if (*it)
+		{
+			ToolType type = (*it)->getType();
+			if (type == SHOVEL)
+				std::cout << "Shovel ";
+			else if (type == HAMMER)
+				std::cout <<"Hammer ";
+			else
+				std::cout << "Unknown tool ";
+			std::cout << (*it)->getId() << std::endl;
+		}
+    }
 }

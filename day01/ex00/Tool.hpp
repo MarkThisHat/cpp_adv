@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:36:43 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/22 18:07:04 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/22 19:29:12 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class	Tool
 	public:
 		virtual	~Tool();
 		virtual int	use() = 0;
+		virtual int	getId() const = 0;
 
 		Tool(ToolType t);
 		Tool(ToolType t, int uses);

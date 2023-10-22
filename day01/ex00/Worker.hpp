@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:53:58 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/22 17:28:09 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/22 19:35:11 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,13 @@ class Worker
 
 		void	addTool(Tool* tool);
 		void	releaseTool(Tool* tool);
+		void	printTools() const;
 		bool	isRegisteredTo(const Workshop* ws) const;
 		void	registerToWorkshop(Workshop* ws);
 		template<ToolType T>
 		Tool*	getTool() const;
 		std::vector<Workshop*>&	getWorkshops();
-		int		getLevel();
+		int		getLevel() const;
 };
 
 #endif

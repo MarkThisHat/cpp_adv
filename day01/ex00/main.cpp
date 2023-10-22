@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:10:36 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/22 18:14:05 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/22 19:43:44 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int	main(void)
 
 	Worker	workerA;
 	Worker	workerB;
+	workerA.printTools();
 	hammerA.setPorter(&workerA);
+	workerA.printTools();
+	workerB.printTools();
 	hammerA.setPorter(&workerB);
 }
