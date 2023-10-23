@@ -48,7 +48,7 @@
 	{
 		- demultiplier: int
 		+ getDemultiplier(): int
-		+ setDemultiplier(demulstiplier: int): void
+		+ setDemultiplier(demultiplier: int): void
 		+ Gear()
 		+ ~Gear()
 	}
@@ -357,8 +357,8 @@
 
 ## Relationships
 
-- [GearLever: Singleton] GearLever herda Singleton (inherit)
-- [GearLever contém várias Gears] Gearlever é composto por Gears (composition)
+- [GearLever: Singleton] GearLever inherits Singleton
+- [GearLever has several Gears] Gearlever has a composition of Gears
 - [Transmission: Wheel] Transmitission está associado a Wheels (association)
 - [Injector: LinkablePart] Injector herda LinkablePart
 - [Pedal LinkablePart] Pedal está associado a LinkablePart (association)
