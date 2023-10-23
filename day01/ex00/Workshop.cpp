@@ -6,22 +6,58 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:30:17 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/21 11:46:40 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:23:19 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Workshop.hpp"
 
+int	Workshop::nextId = 1;
+
 Workshop::Workshop()
-{}
+{
+	id = nextId++;
+	std::cout << "#F# Workshop " << getId() << " created\n";
+}
 
 Workshop::Workshop(ToolType type1)
 {
+	id = nextId++;
+	std::cout << "#F# Workshop " << getId() << " created, requires: ";
+	switch(type1)
+	{
+		case SHOVEL:
+			std::cout << "shovels\n";
+			break ;
+		case HAMMER:
+			std::cout << "hammers\n";
+			break;
+	}
 	requiredToolTypes.push_back(type1);
 }
 
 Workshop::Workshop(ToolType type1, ToolType type2)
 {
+	id = nextId++;
+	std::cout << "#F# Workshop " << getId() << " created, requires: ";
+	switch(type1)
+	{
+		case SHOVEL:
+			std::cout << "shovels and ";
+			break ;
+		case HAMMER:
+			std::cout << "hammers and ";
+			break;
+	}
+	switch(type2)
+	{
+		case SHOVEL:
+			std::cout << "shovels\n";
+			break ;
+		case HAMMER:
+			std::cout << "hammers\n";
+			break;
+	}
 	requiredToolTypes.push_back(type1);
 	requiredToolTypes.push_back(type2);
 }
@@ -81,4 +117,9 @@ void Workshop::registerWorker(Worker* worker)
 void Workshop::addWorker(Worker* worker)
 {
 	registeredWorkers.push_back(worker);
+}
+
+int	Workshop::getId() const
+{
+	return id;
 }

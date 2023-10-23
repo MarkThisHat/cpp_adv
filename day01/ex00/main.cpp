@@ -6,12 +6,13 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:10:36 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/23 10:08:21 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:03:17 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Shovel.hpp"
 #include "Hammer.hpp"
+#include "Workshop.hpp"
 
 
 int	main(void)
@@ -37,7 +38,11 @@ int	main(void)
 	workerB.printTools();
 	hammerA.setPorter(&workerB);
 	hammerA.setPorter(&workerA);
+	hammer2.setPorter(&workerB);
 	workerA.printTools();
 	workerB.printTools();
 	workerC.printTools();
+	Workshop workshopNoTool;
+    Workshop workshopOneTool(HAMMER);
+    Workshop workshopBothTool(HAMMER, SHOVEL);
 }

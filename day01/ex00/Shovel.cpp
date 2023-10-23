@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:29:24 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/23 10:39:11 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:14:44 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	Shovel::use(void)
 		return (UNCARRIED);
 	if (numberOfUses)
 	{
-		std::cout << "Shovel was used, " << --numberOfUses << " left\n";
+		std::cout << "-S- Shovel was used, " << --numberOfUses << " left\n";
 		return (numberOfUses);
 	}
 	else
@@ -56,14 +56,14 @@ void	Shovel::setPorter(Worker* worker)
 		return ;
 	if (porter != NULL)
 	{
-		std::cout << "Worker " << porter->getLevel();
+		std::cout << "-S- Worker " << porter->getLevel();
 		std::cout << "'s shovel " << getId() << " was taken" << std::endl;
 		porter->releaseTool(this);
 	}
 	porter = worker;
 	if (!worker->hasTool(this))
 		worker->addTool(this);
-	std::cout << "Worker " << worker->getLevel() << " picked up ";
+	std::cout << "-S- Worker " << worker->getLevel() << " picked up ";
 	std::cout << "shovel " << getId() << std::endl;
 }
 

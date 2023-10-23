@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:15:22 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/23 10:38:23 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:13:26 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	Worker::id = 1;
 Worker::Worker()
 {
 	setLevel(id++);
-	std::cout << "Worker " << getLevel() << " created\n";
+	std::cout << "*W* Worker " << getLevel() << " created\n";
 }
 
 Worker::Worker(const std::vector<Tool*>& toolsList)
@@ -63,7 +63,7 @@ void	Worker::releaseTool(Tool* tool)
 	{
 		ToolType type = (*it)->getType();
 		(*it)->setPorter(NULL);
-		std::cout << "Worker " << getLevel() << " dropped ";
+		std::cout << "*W* Worker " << getLevel() << " dropped ";
 		if (type == SHOVEL)
 			std::cout << "shovel ";
 		else if (type == HAMMER)
@@ -149,18 +149,19 @@ Statistic	Worker::getStatistic()
 
 void Worker::printTools() const 
 {
-	std::cout << "Worker " << getLevel() << " ";
+	std::cout << "*W* Worker " << getLevel() << " ";
 	if (tools.empty())
 	{
 		std::cout << "has no tools." << std::endl;
 		return;
 	}
 	std::cout << "is holding:\n";
-    for (std::vector<Tool*>::const_iterator it = tools.begin(); it != tools.end(); it++)
+	for (std::vector<Tool*>::const_iterator it = tools.begin(); it != tools.end(); it++)
 	{
 		if (*it)
 		{
 			ToolType type = (*it)->getType();
+			std::cout << "*W* ";
 			if (type == SHOVEL)
 				std::cout << "Shovel ";
 			else if (type == HAMMER)
@@ -169,5 +170,5 @@ void Worker::printTools() const
 				std::cout << "Unknown tool ";
 			std::cout << (*it)->getId() << std::endl;
 		}
-    }
+	}
 }
