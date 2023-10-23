@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:15:22 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/22 19:54:54 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/23 07:34:27 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,12 @@ Worker::Worker(const std::vector<Tool*>& toolsList)
 
 Worker::~Worker()
 {
-	while(!tools.empty())
-		releaseTool(tools.back());
+	for (std::vector<Tool*>::iterator it = tools.begin(); it != tools.end();)
+	{
+		(*it)->setPorter(NULL);
+		tools.erase(it);
+		it = tools.begin();
+	}
 	for(std::vector<Workshop*>::iterator it = workshops.begin();\
 	 it != workshops.end(); ++it)
 		(*it)->releaseWorker(this);

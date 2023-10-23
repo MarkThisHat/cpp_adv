@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:29:24 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/22 19:53:41 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/23 07:15:41 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ Shovel::Shovel(int uses) :
 Tool (SHOVEL, uses)
 {
 	id = nextId++;
+}
+
+Shovel::~Shovel()
+{
+	if (porter)
+	{
+		porter->releaseTool(this);
+		porter = NULL;
+	}
 }
 
 int	Shovel::use(void)

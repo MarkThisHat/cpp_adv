@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:40:23 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/22 19:37:15 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/23 07:27:59 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ Tool::~Tool()
 
 void	Tool::setPorter(Worker* worker)
 {
-	if (getPorter() == worker || worker == NULL)
+	if (worker == NULL)
+		porter = NULL;
+	if (getPorter() == worker)
 		return ;
 	if (porter != NULL)
 		porter->releaseTool(this);

@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:29:24 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/22 19:53:54 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/23 07:45:03 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ Tool (HAMMER, uses)
 	id = nextId++;
 }
 
+Hammer::~Hammer()
+{
+	if (porter)
+	{
+		porter->releaseTool(this);
+		porter = NULL;
+	}
+}
+
+
 int	Hammer::use(void)
 {
 	if (porter == NULL)
@@ -41,13 +51,15 @@ int	Hammer::use(void)
 
 void	Hammer::setPorter(Worker* worker)
 {
-	if (worker == NULL || getPorter() == worker)
+	if (worker == NULL)
+		porter = NULL;
+	if (getPorter() == worker)
 		return ;
 	if (porter != NULL)
 	{
-		porter->releaseTool(this);
 		std::cout << "Worker " << porter->getLevel();
 		std::cout << "'s hammer " << getId() << " was taken" << std::endl;
+		porter->releaseTool(this);
 	}
 	porter = worker;
 	worker->addTool(this);

@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:10:36 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/22 19:43:44 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/23 07:37:54 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,11 @@ int	main(void)
 	hammerA.setPorter(&workerA);
 	workerA.printTools();
 	workerB.printTools();
+	std::cout << "a" << std::endl;
 	hammerA.setPorter(&workerB);
+	std::cout << "b" << std::endl;
+	workerB.~Worker();
+	std::cout << "c" << std::endl;
+	hammerA.setPorter(&workerA);
+	hammerA.~Hammer();
 }
