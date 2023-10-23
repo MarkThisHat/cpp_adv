@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:53:58 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/22 19:35:11 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/23 10:38:41 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ class Worker
 		Tool*	getTool() const;
 		std::vector<Workshop*>&	getWorkshops();
 		int		getLevel() const;
+		bool	hasTool(Tool* tool) const;
 };
 
 #endif

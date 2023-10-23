@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:29:24 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/23 07:50:23 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/23 10:39:11 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void	Shovel::setPorter(Worker* worker)
 		porter->releaseTool(this);
 	}
 	porter = worker;
-	worker->addTool(this);
+	if (!worker->hasTool(this))
+		worker->addTool(this);
 	std::cout << "Worker " << worker->getLevel() << " picked up ";
 	std::cout << "shovel " << getId() << std::endl;
 }

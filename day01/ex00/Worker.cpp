@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:15:22 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/23 07:58:57 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/23 10:38:23 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,11 @@ template<>
 Tool*	Worker::getTool<HAMMER>() const
 {
 	return getTemplatedTool(HAMMER);
+}
+
+bool	Worker::hasTool(Tool* tool) const
+{
+	return std::find(tools.begin(), tools.end(), tool) != tools.end();
 }
 
 Tool*	Worker::getTemplatedTool(ToolType type) const
