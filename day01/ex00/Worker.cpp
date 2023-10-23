@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:15:22 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/23 11:13:26 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:24:53 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,37 @@ Worker::~Worker()
 	 it != workshops.end(); ++it)
 		(*it)->releaseWorker(this);
 	workshops.clear();
+}
+
+void	Worker::work()
+{
+	if (workshops.empty())
+	{
+		std::cout << "*W* Worker " << getLevel();
+		std::cout << " is not registered to any workshop to work" << std::endl;
+		return;
+	}
+	for (std::vector<Workshop*>::iterator it =\
+	 workshops.begin(); it != workshops.end(); it++)
+	{
+		std::cout << "*W* Worker " << getLevel();
+		std::cout << " is working on workshop " << (*it)->getId() << "\n";
+	}
+}
+
+void	Worker::work(Workshop* ws)
+{
+	std::cout << "*W* Worker " << getLevel();
+	if (!ws)
+	{
+		std::cout << " cannot work with unprovided workshop" << std::endl;
+		return;
+	}
+	if (std::find(workshops.begin(), workshops.end(), ws) != workshops.end()) 
+		std::cout << " is working in workshop " << ws->getId();
+	else
+		std::cout << " cannot work unregistered on workshop " << ws->getId();
+	 std::cout << "\n";
 }
 
 void	Worker::addTool(Tool* tool)
@@ -161,7 +192,7 @@ void Worker::printTools() const
 		if (*it)
 		{
 			ToolType type = (*it)->getType();
-			std::cout << "*W* ";
+			std::cout << "\t*W* ";
 			if (type == SHOVEL)
 				std::cout << "Shovel ";
 			else if (type == HAMMER)

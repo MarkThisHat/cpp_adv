@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:10:36 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/23 11:03:17 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:28:17 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,42 @@ int	main(void)
 	workerA.printTools();
 	workerB.printTools();
 	workerC.printTools();
+	workerA.work();
+	workerB.work();
+	workerC.work();
 	Workshop workshopNoTool;
-    Workshop workshopOneTool(HAMMER);
-    Workshop workshopBothTool(HAMMER, SHOVEL);
+	Workshop workshopOneTool(HAMMER);
+	Workshop workshopBothTool(HAMMER, SHOVEL);
+	workshopNoTool.executeWorkDay();
+	workshopOneTool.executeWorkDay();
+	workshopBothTool.executeWorkDay();
+	workshopNoTool.registerWorker(&workerA);
+	workshopNoTool.registerWorker(&workerB);
+	workshopNoTool.registerWorker(&workerC);
+	try 
+	{
+		workshopOneTool.registerWorker(&workerA);
+		workerB.registerToWorkshop(&workshopOneTool);
+		workshopOneTool.registerWorker(&workerC);	
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "\nError: " << e.what() << std::endl;
+	}
+	try 
+	{
+		workshopBothTool.registerWorker(&workerC);
+		workshopBothTool.registerWorker(&workerA);
+		workshopBothTool.registerWorker(&workerB);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "\nError: " << e.what() << std::endl;
+	}
+	workerA.work();
+	workerB.work();
+	workerC.work();
+	workshopNoTool.executeWorkDay();
+	workshopOneTool.executeWorkDay();
+	workshopBothTool.executeWorkDay();
 }

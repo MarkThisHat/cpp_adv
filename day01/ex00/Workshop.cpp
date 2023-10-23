@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:30:17 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/23 11:23:19 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:32:33 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,11 @@ void Workshop::releaseWorker(Worker* worker)
 	std::find(registeredWorkers.begin(), registeredWorkers.end(), worker);
 	if (it != registeredWorkers.end())
 	{
+		registeredWorkers.erase(it);
 		std::vector<Workshop*>& workerWorkshops = worker->getWorkshops();
 		workerWorkshops.erase(std::remove(workerWorkshops.begin(),\
 		 workerWorkshops.end(), this), workerWorkshops.end());
-		registeredWorkers.erase(it);
 	}
-	else
-		throw std::runtime_error("Worker not registered in this workshop");
 }
 
 void Workshop::registerWorker(Worker* worker)
@@ -111,15 +109,31 @@ void Workshop::registerWorker(Worker* worker)
 			throw std::runtime_error("Worker lacks required tools.");
 	}
 	this->addWorker(worker);
+	std::cout << "#F# Worker " << worker->getLevel() << " was registered ";
 	worker->registerToWorkshop(this);
+	std::cout << "to workshop " << getId() << std::endl;
 }
 
-void Workshop::addWorker(Worker* worker)
+void	Workshop::executeWorkDay()
 {
-	registeredWorkers.push_back(worker);
+	std::cout << "#F# Workshop " << getId() << " launching work day\n";
+	for (std::vector<Worker*>::iterator it =\
+	 registeredWorkers.begin(); it != registeredWorkers.end(); ++it)
+	 {
+		std::cout << "  ";
+		(*it)->work(this);
+	 }
+	if (registeredWorkers.empty())
+		std::cout << "  #F# Workshop " << getId() << " doesn't have workers\n";
+	std::cout << "\t#F# Workshop " << getId() << " finished work day\n";
 }
 
 int	Workshop::getId() const
 {
 	return id;
+}
+
+void Workshop::addWorker(Worker* worker)
+{
+	registeredWorkers.push_back(worker);
 }
