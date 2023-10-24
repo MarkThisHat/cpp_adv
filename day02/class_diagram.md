@@ -48,7 +48,7 @@
 	{
 		- demultiplier: int
 		+ getDemultiplier(): int
-		+ setDemultiplier(demulstiplier: int): void
+		+ setDemultiplier(demultiplier: int): void
 		+ Gear()
 		+ ~Gear()
 	}
@@ -393,310 +393,310 @@
 
 ```
 @startuml
-!theme reddress-darkblue
+!theme crt-amber
 
-package CarComposition <<Rectangle>>
+class Wheel
 {
-	class Wheel ##white
-	{
-		==
-		__ Methods __
-		+ executeRotation(p_force: float): void
-		.. Constructor/Destructor ..
-		+ Wheel()
-		+ ~Wheel()
-	}
-
-	abstract class LinkablePart ##[bold]white
-	{
-		==
-		__ Methods __
-		+ {abstract} execute(p_pression: float): void
-	}
-
-	class Gear ##white
-	{
-		__ Attributes __
-		- demultiplier: int
-		==
-		__ Methods __
-		.. Getters/Setters ..
-		+ getDemultiplier(): int
-		+ setDemultiplier(demulstiplier: int): void
-		.. Constructor/Destructor ..
-		+ Gear()
-		+ ~Gear()
-	}
-
-	class GearLever ##white
-	{
-		__ Attributes __
-		- gears: Gear[]
-		- level: int
-		==
-		__ Methods __
-		+ change(): void
-		+ activeGear(): Gear*
-		.. Getters/Setters ..
-		+ getGears(): Gear[]
-		+ setGears(gears: Gear[]): void
-		+ getLevel(): int
-		+ setLevel(level: int): void
-		.. Constructor/Destructor ..
-		- GearLever()
-		+ ~GearLever()
-	}
-
-	stereotype Singleton <<GearLever>> ##[bold]white
-	{
-		__ Attributes __
-		- {static} instance: Singleton*
-		==
-		__ Methods __
-		.. Getters/Setters ..
-		+ {static} getInstance: Singleton*
-		.. Constructor/Destructor ..
-		- Singleton(instance: Singleton*)
-		+ ~Singleton()
-	}
-
-	class Pedal ##white
-	{
-		__ Attributes __
-		- target: LinkablePart*
-		==
-		__ Methods __
-		+ setTarget(p_part: LinkablePart*): void
-		+ use(p_pression: float): void
-		.. Getters/Setters ..
-		.. Constructor/Destructor ..
-		+ Pedal()
-		+ ~Pedal()
-	}
-
-	class SteerWheel ##white
-	{
-		__ Attributes __
-		- dae: Dae*
-		==
-		__ Methods __
-		+ turn(p_angle: float): void
-		.. Getters/Setters ..
-		+ getDae(): Dae*
-		+ setDae(dae: Dae*): void
-		.. Constructor/Destructor ..
-		+ SteerWheel()
-		+ ~SteerWheel()
-	}
-
-	class Motor ##white
-	{
-		__ Attributes __
-		- injector: Injector
-		- explosionChamber: ExplosionChamber
-		- crankshaft: Crankshaft
-		==
-		__ Methods __
-		+ connectToTransmission(p_transmission: Transmission*): void
-		.. Getters/Setters ..
-		+ getInjector(): Injector
-		+ setInjector(injector: Injector): void
-		+ getExplosionChamber(): ExplosionChamber
-		+ setExplosionChamber(explosionChamber: ExplosionChamber): void
-		+ getCrankshaft(): Crankshaft
-		+ setCrankshaft(crankshaft: Crankshaft): void
-		.. Constructor/Destructor ..
-		+ Motor()
-		+ ~Motor()
-	}
-
-	class Crankshaft ##white
-	{
-		__ Attributes __
-		- transmission: Transmission*
-		==
-		__ Methods __
-		+ receiveForce(p_volume: float): void
-		.. Getters/Setters ..
-		+ getTransmission(): Transmission*
-		+ setTransmission(transmission: Transmission*): void
-		.. Constructor/Destructor ..
-		+ Crankshaft()
-		+ ~Crankshaft()
-	}
-
-	class ExplosionChamber ##white
-	{
-		__ Attributes __
-		- crankshaft: Crankshaft*
-		==
-		__ Methods __
-		+ fill(p_volume: float): void
-		.. Getters/Setters ..
-		+ getCrankshaft(): Crankshaft*
-		+ setCrankshaft(crankshaft: Crankshaft*)
-		.. Constructor/Destructor ..
-		+ ExplosionChamber()
-		+ ~ExplosionChamber()
-	}
-
-	class Injector ##white
-	{
-		__ Attributes __
-		- explosionChamber: ExplosionChamber*
-		==
-		__ Methods __
-		+ execute(p_pression: float): void
-		.. Getters/Setters ..
-		+ getExplosionChamber(): ExplosionChamber*
-		+ setExplosionChamber(explosionChamber: ExplosionChamber*): void
-		.. Constructor/Destructor ..
-		+ Injector()
-		+ ~Injector()
-	}
-
-	class Transmission ##white
-	{
-		__ Attributes __
-		- wheels: *Wheel[]
-		==
-		__ Methods __
-		+ activate(p_force: float): void
-		.. Getters/Setters ..
-		+ getWheels(): *Wheel[]
-		+ setWheels(wheels: *Wheel[]): void
-		.. Constructor/Destructor ..
-		+ Transmission()
-		+ ~Transmission()
-	}
-
-	class Brake ##white
-	{
-		__ Attributes __
-		- wheel: Wheel*
-		==
-		__ Methods __
-		+ execute(p_force: float): void
-		+ attackWheel(p_wheel: Wheel*): void
-		.. Getters/Setters ..
-		+ getWheel(): Wheel*
-		+ setWheel(wheel: Wheel*): void
-		.. Constructor/Destructor ..
-		+ Brake()
-		+ ~Brake()
-	}
-
-	class Cockpit ##white
-	{
-		__ Attributes __
-		- pedal: Pedal
-		- steerWheel: SteerWheel
-		- gearLever: GearLever
-		==
-		__ Methods __
-		.. Getters/Setters ..
-		+ getPedal(): Pedal
-		+ setPedal(pedal: Pedal): void
-		+ getSteerWheel(): SteerWheel
-		+ setSteerWheel(steerWheel: SteerWheel): void
-		+ getGearLever(): GearLever
-		+ setGearLever(gearLever: GearLever): void
-		.. Constructor/Destructor ..
-		+ Cockpit()
-		+ ~Cockpit()
-	}
-
-	class BrakeController ##white
-	{
-		__ Attributes __
-		- brakes: Brake[]
-		==
-		__ Methods __
-		+ execute(p_pression: float): void
-		.. Getters/Setters ..
-		+ getBrakes(): Brake[]
-		+ setBrakes(brakes: Brake[]): void
-		.. Constructor/Destructor ..
-		+ BrakeController()
-		+ ~BrakeController()
-	}
-
-	class Dae ##white
-	{
-		__ Attributes __
-		- direction: Direction*
-		- force: float
-		==
-		__ Methods __
-		+ use(p_angle: float): void
-		.. Getters/Setters ..
-		+ getDirection(): Direction*
-		+ setDirection(direction: Direction*): void
-		+ getForce(): float
-		+ setForce(force: float): void
-		.. Constructor/Destructor ..
-		+ Dae()
-		+ ~Dae()
-	}
-
-	class Direction ##white
-	{
-		__ Attributes __
-		- wheels: Wheel[]
-		==
-		__ Methods __
-		+ turn(p_angle: float): void
-		.. Getters/Setters ..
-		+ getWheels(): Wheel[]
-		+ setWheels(wheels: Wheel[]): void
-		.. Constructor/Destructor ..
-		+ Direction()
-		+ ~Direction()
-	}
-
-	class Electronics ##white
-	{
-		__ Attributes __
-		- dae: Dae
-		==
-		__ Methods __
-		.. Getters/Setters ..
-		+ getDae(): Dae
-		+ setDae(dae: Dae): void
-		.. Constructor/Destructor ..
-		+ Electronics()
-		+ ~Electronics()
-	}
-
-	class Car ##white
-	{
-		__ Attributes __
-		- brakeController: BrakeController
-		- cockpit: Cockpit
-		- electronics: Electronics
-		- direction: Direction
-		- transmission: Transmission
-		- motor: Motor
-		==
-		__ Methods __
-		.. Getters/Setters ..
-		+ getBrakeController(): BrakeController
-		+ setBrakeController(brakeController: BrakeController): void
-		+ getCockpit(): Cockpit
-		+ setCockpit(cockpit: Cockpit): void
-		+ getElectronics(): Electronics
-		+ setElectronics(electronics: Electronics): void
-		+ getDirection(): Direction
-		+ setDirection(direction: Direction): void
-		+ getTransmission(): Transmission
-		+ setTransmission(transmission: Transmission): void
-		+ getMotor(): Motor
-		+ setMotor(motor: Motor): void
-		.. Constructor/Destructor ..
-		+ Car()
-		+ ~Car()
-	}
+	==
+	__ Methods __
+	+ executeRotation(p_force: float): void
+	.. Constructor/Destructor ..
+	+ Wheel()
+	+ ~Wheel()
 }
+
+abstract class LinkablePart
+{
+	==
+	__ Methods __
+	+ {abstract} execute(p_pression: float): void
+	.. Destructor ..
+	+ ~LinkablePart()
+}
+
+class Gear
+{
+	__ Attributes __
+	- demultiplier: int
+	==
+	__ Methods __
+	.. Getters/Setters ..
+	+ getDemultiplier(): int
+	+ setDemultiplier(demultiplier: int): void
+	.. Constructor/Destructor ..
+	+ Gear()
+	+ ~Gear()
+}
+
+class GearLever
+{
+	__ Attributes __
+	- gears: Gear[]
+	- level: int
+	==
+	__ Methods __
+	+ change(): void
+	+ activeGear(): Gear*
+	.. Getters/Setters ..
+	+ getGears(): Gear[]
+	+ setGears(gears: Gear[]): void
+	+ getLevel(): int
+	+ setLevel(level: int): void
+	.. Constructor/Destructor ..
+	- GearLever()
+	+ ~GearLever()
+}
+
+stereotype Singleton <<GearLever>> ##[bold]
+{
+	__ Attributes __
+	- {static} instance: Singleton*
+	==
+	__ Methods __
+	.. Getters/Setters ..
+	+ {static} getInstance: Singleton*
+	.. Constructor/Destructor ..
+	- Singleton(instance: Singleton*)
+	+ ~Singleton()
+}
+
+class Pedal
+{
+	__ Attributes __
+	- target: LinkablePart*
+	==
+	__ Methods __
+	+ setTarget(p_part: LinkablePart*): void
+	+ use(p_pression: float): void
+	.. Getters/Setters ..
+	.. Constructor/Destructor ..
+	+ Pedal()
+	+ ~Pedal()
+}
+
+class SteerWheel
+{
+	__ Attributes __
+	- dae: Dae*
+	==
+	__ Methods __
+	+ turn(p_angle: float): void
+	.. Getters/Setters ..
+	+ getDae(): Dae*
+	+ setDae(dae: Dae*): void
+	.. Constructor/Destructor ..
+	+ SteerWheel()
+	+ ~SteerWheel()
+}
+
+class Motor
+{
+	__ Attributes __
+	- injector: Injector
+	- explosionChamber: ExplosionChamber
+	- crankshaft: Crankshaft
+	==
+	__ Methods __
+	+ connectToTransmission(p_transmission: Transmission*): void
+	.. Getters/Setters ..
+	+ getInjector(): Injector
+	+ setInjector(injector: Injector): void
+	+ getExplosionChamber(): ExplosionChamber
+	+ setExplosionChamber(explosionChamber: ExplosionChamber): void
+	+ getCrankshaft(): Crankshaft
+	+ setCrankshaft(crankshaft: Crankshaft): void
+	.. Constructor/Destructor ..
+	+ Motor()
+	+ ~Motor()
+}
+
+class Crankshaft
+{
+	__ Attributes __
+	- transmission: Transmission*
+	==
+	__ Methods __
+	+ receiveForce(p_volume: float): void
+	.. Getters/Setters ..
+	+ getTransmission(): Transmission*
+	+ setTransmission(transmission: Transmission*): void
+	.. Constructor/Destructor ..
+	+ Crankshaft()
+	+ ~Crankshaft()
+}
+
+class ExplosionChamber
+{
+	__ Attributes __
+	- crankshaft: Crankshaft*
+	==
+	__ Methods __
+	+ fill(p_volume: float): void
+	.. Getters/Setters ..
+	+ getCrankshaft(): Crankshaft*
+	+ setCrankshaft(crankshaft: Crankshaft*)
+	.. Constructor/Destructor ..
+	+ ExplosionChamber()
+	+ ~ExplosionChamber()
+}
+
+class Injector
+{
+	__ Attributes __
+	- explosionChamber: ExplosionChamber*
+	==
+	__ Methods __
+	+ execute(p_pression: float): void
+	.. Getters/Setters ..
+	+ getExplosionChamber(): ExplosionChamber*
+	+ setExplosionChamber(explosionChamber: ExplosionChamber*): void
+	.. Constructor/Destructor ..
+	+ Injector()
+	+ ~Injector()
+}
+
+class Transmission
+{
+	__ Attributes __
+	- wheels: *Wheel[]
+	==
+	__ Methods __
+	+ activate(p_force: float): void
+	.. Getters/Setters ..
+	+ getWheels(): *Wheel[]
+	+ setWheels(wheels: *Wheel[]): void
+	.. Constructor/Destructor ..
+	+ Transmission()
+	+ ~Transmission()
+}
+
+class Brake
+{
+	__ Attributes __
+	- wheel: Wheel*
+	==
+	__ Methods __
+	+ execute(p_force: float): void
+	+ attackWheel(p_wheel: Wheel*): void
+	.. Getters/Setters ..
+	+ getWheel(): Wheel*
+	+ setWheel(wheel: Wheel*): void
+	.. Constructor/Destructor ..
+	+ Brake()
+	+ ~Brake()
+}
+
+class Cockpit
+{
+	__ Attributes __
+	- pedal: Pedal
+	- steerWheel: SteerWheel
+	- gearLever: GearLever
+	==
+	__ Methods __
+	.. Getters/Setters ..
+	+ getPedal(): Pedal
+	+ setPedal(pedal: Pedal): void
+	+ getSteerWheel(): SteerWheel
+	+ setSteerWheel(steerWheel: SteerWheel): void
+	+ getGearLever(): GearLever
+	+ setGearLever(gearLever: GearLever): void
+	.. Constructor/Destructor ..
+	+ Cockpit()
+	+ ~Cockpit()
+}
+
+class BrakeController
+{
+	__ Attributes __
+	- brakes: Brake[]
+	==
+	__ Methods __
+	+ execute(p_pression: float): void
+	.. Getters/Setters ..
+	+ getBrakes(): Brake[]
+	+ setBrakes(brakes: Brake[]): void
+	.. Constructor/Destructor ..
+	+ BrakeController()
+	+ ~BrakeController()
+}
+
+class Dae
+{
+	__ Attributes __
+	- direction: Direction*
+	- force: float
+	==
+	__ Methods __
+	+ use(p_angle: float): void
+	.. Getters/Setters ..
+	+ getDirection(): Direction*
+	+ setDirection(direction: Direction*): void
+	+ getForce(): float
+	+ setForce(force: float): void
+	.. Constructor/Destructor ..
+	+ Dae()
+	+ ~Dae()
+}
+
+class Direction
+{
+	__ Attributes __
+	- wheels: Wheel[]
+	==
+	__ Methods __
+	+ turn(p_angle: float): void
+	.. Getters/Setters ..
+	+ getWheels(): Wheel[]
+	+ setWheels(wheels: Wheel[]): void
+	.. Constructor/Destructor ..
+	+ Direction()
+	+ ~Direction()
+}
+
+class Electronics
+{
+	__ Attributes __
+	- dae: Dae
+	==
+	__ Methods __
+	.. Getters/Setters ..
+	+ getDae(): Dae
+	+ setDae(dae: Dae): void
+	.. Constructor/Destructor ..
+	+ Electronics()
+	+ ~Electronics()
+}
+
+class Car
+{
+	__ Attributes __
+	- brakeController: BrakeController
+	- cockpit: Cockpit
+	- electronics: Electronics
+	- direction: Direction
+	- transmission: Transmission
+	- motor: Motor
+	==
+	__ Methods __
+	.. Getters/Setters ..
+	+ getBrakeController(): BrakeController
+	+ setBrakeController(brakeController: BrakeController): void
+	+ getCockpit(): Cockpit
+	+ setCockpit(cockpit: Cockpit): void
+	+ getElectronics(): Electronics
+	+ setElectronics(electronics: Electronics): void
+	+ getDirection(): Direction
+	+ setDirection(direction: Direction): void
+	+ getTransmission(): Transmission
+	+ setTransmission(transmission: Transmission): void
+	+ getMotor(): Motor
+	+ setMotor(motor: Motor): void
+	.. Constructor/Destructor ..
+	+ Car()
+	+ ~Car()
+}
+
 
 GearLever --|> Singleton
 Injector --|> LinkablePart
