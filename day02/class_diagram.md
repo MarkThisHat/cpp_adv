@@ -48,7 +48,7 @@
 	{
 		- demultiplier: int
 		+ getDemultiplier(): int
-		+ setDemultiplier(demultiplier: int): void
+		+ setDemultiplier(demulstiplier: int): void
 		+ Gear()
 		+ ~Gear()
 	}
@@ -62,7 +62,6 @@
 	class LinkablePart
 	{
 		+ execute(p_pression: float): void
-		+ ~LinkablePart()
 	}
 ```
 
@@ -357,8 +356,8 @@
 
 ## Relationships
 
-- [GearLever: Singleton] GearLever inherits Singleton
-- [GearLever has several Gears] Gearlever has a composition of Gears
+- [GearLever: Singleton] GearLever herda Singleton (inherit)
+- [GearLever contém várias Gears] Gearlever é composto por Gears (composition)
 - [Transmission: Wheel] Transmitission está associado a Wheels (association)
 - [Injector: LinkablePart] Injector herda LinkablePart
 - [Pedal LinkablePart] Pedal está associado a LinkablePart (association)
@@ -413,8 +412,6 @@ package CarComposition <<Rectangle>>
 		==
 		__ Methods __
 		+ {abstract} execute(p_pression: float): void
-		.. Destructor ..
-		+ ~LinkablePart()
 	}
 
 	class Gear ##white
@@ -702,32 +699,35 @@ package CarComposition <<Rectangle>>
 }
 
 GearLever --|> Singleton
-GearLever "1" *--> "0..*" Gear
 Injector --|> LinkablePart
 BrakeController --|> LinkablePart
-Pedal "1" --> "1" LinkablePart
-BrakeController "1" *--> "0..*" Brake
-Brake "1" o--> "1" Wheel
-Transmission "1" o--> "0..*" Wheel
-Crankshaft "1" --> "1" Transmission
-ExplosionChamber "1" --> "1" Crankshaft
-Injector "1" --> "1" ExplosionChamber
-Electronics "1" *--> "1" Dae
-Dae "1" *--> "1" Direction
-Direction "1" o--> "0..*" Wheel
-SteerWheel "1" --> "1" Dae
-Cockpit "1" *--> "1" Pedal
-Cockpit "1" *--> "1" SteerWheel
-Cockpit "1" *--> "1" GearLever
-Motor "1" *--> "1" Injector
-Motor "1" *--> "1" ExplosionChamber
-Motor "1" *--> "1" Crankshaft
-Car "1" *--> "1" BrakeController
-Car "1" *--> "1" Direction
-Car "1" *--> "1" Transmission
-Car "1" *--> "1" Motor
-Car "1" *--> "1" Electronics
-Car "1" *--> "1" Cockpit
+
+Pedal "1" <-- "1" LinkablePart
+
+Dae "1" o-- "1" Direction
+SteerWheel "1" o-- "1" Dae
+Brake "1" o-- "1" Wheel
+Transmission "1" o-- "0..*" Wheel
+Crankshaft "1" o-- "1" Transmission
+ExplosionChamber "1" o-- "1" Crankshaft
+Injector "1" o-- "1" ExplosionChamber
+
+Electronics "1" *-- "1" Dae
+Direction "1" *-- "0..*" Wheel
+GearLever "1" *-- "0..*" Gear
+BrakeController "1" *-- "0..*" Brake
+Cockpit "1" *-- "1" Pedal
+Cockpit "1" *-- "1" SteerWheel
+Cockpit "1" *-- "1" GearLever
+Motor "1" *-- "1" Injector
+Motor "1" *-- "1" ExplosionChamber
+Motor "1" *-- "1" Crankshaft
+Car "1" *-- "1" BrakeController
+Car "1" *-- "1" Direction
+Car "1" *-- "1" Transmission
+Car "1" *-- "1" Motor
+Car "1" *-- "1" Electronics
+Car "1" *-- "1" Cockpit
 
 @enduml
 ```
