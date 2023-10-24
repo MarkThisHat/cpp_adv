@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:00 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/24 11:30:34 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:19:29 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,30 @@
 int main(void)
 {
 	Car	deluxeCar;
+
+	std::cout << "Starting the car:" << std::endl;
+	deluxeCar.start();
+
+	std::cout << "\nAccelerating and shifting gears:" << std::endl;
+	deluxeCar.accelerate(50);
+	deluxeCar.shift_gears_up();
+
+	std::cout << "\nMaking a turn:" << std::endl;
+	deluxeCar.turn_wheel(45);
+
+	std::cout << "\nStopping the car:" << std::endl;
+	deluxeCar.stop();
+
+	std::cout << "\nEmergency situation:" << std::endl;
+	deluxeCar.apply_emergency_brakes();
+
+	return (0);
+}
+
+int		Car::accelerate(int speed)
+{
+	std::cout << "Accelerating to " << speed << "km/h" << std::endl;
+	return (speed);
 }
 
 bool	Engine::start()

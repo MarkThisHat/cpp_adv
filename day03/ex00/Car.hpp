@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:56:59 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/24 11:16:33 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:17:59 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,19 @@ class	Car
 		Brakes			brakes;
 
 	public:
-		bool	start() { engine.start(); }
+		bool	start() { return engine.start(); }
 		bool	stop() 
 		{
 			engine.stop();
 			brakes.apply_force(REGULAR);
+			return true;
 		}
 		int		accelerate(int speed);
-		int		shift_gears_up() { transmission.shift_up(); }
-		int		shift_gears_down() { transmission.shift_down(); }
+		int		shift_gears_up() { return transmission.shift_up(); }
+		int		shift_gears_down() { return transmission.shift_down(); }
 		void	reverse() { transmission.reverse(); }
-		int		turn_wheel(int angle) { wheels.turn(angle); }
-		void	straighten_wheels() { wheel.straighten(); }
+		int		turn_wheel(int angle) { return wheels.turn(angle); }
+		void	straighten_wheels() { wheels.straighten(); }
 		void	apply_force_on_brakes(int force) { brakes.apply_force(force); }
 		void	apply_emergency_brakes() { brakes.apply_emergency(); }
 };
