@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 15:13:59 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/24 15:28:35 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:40:55 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int main(void)
 {
-	int	articles1[] = { 0, 1, 2 };
+	int	articles1[] = { 0, 4, 6 };
 	int	articles2[] = { 0, 2, 4 };
 	int	articles3[] = { 6, 1, 3, 4 };
 
@@ -38,3 +38,5 @@ int main(void)
 
 	return (0);
 }
+
+//c++ -Wall -Werror -Wextra -I ./ main.cpp -o olid

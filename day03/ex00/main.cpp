@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:00 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/24 12:19:29 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:41:38 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,3 +95,5 @@ bool	Wheel::straighten()
 	std::cout << "Wheels straightened." << std::endl;
 	return (true);
 }
+
+//c++ -Wall -Werror -Wextra -I ./ main.cpp -o solid
