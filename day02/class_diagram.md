@@ -397,7 +397,7 @@
 
 class Wheel
 {
-	==
+	--
 	__ Methods __
 	+ executeRotation(p_force: float): void
 	.. Constructor/Destructor ..
@@ -407,7 +407,7 @@ class Wheel
 
 abstract class LinkablePart
 {
-	==
+	--
 	__ Methods __
 	+ {abstract} execute(p_pression: float): void
 	.. Destructor ..
@@ -418,7 +418,7 @@ class Gear
 {
 	__ Attributes __
 	- demultiplier: int
-	==
+	--
 	__ Methods __
 	.. Getters/Setters ..
 	+ getDemultiplier(): int
@@ -433,7 +433,7 @@ class GearLever
 	__ Attributes __
 	- gears: Gear[]
 	- level: int
-	==
+	--
 	__ Methods __
 	+ change(): void
 	+ activeGear(): Gear*
@@ -451,7 +451,7 @@ stereotype Singleton <<GearLever>> ##[bold]
 {
 	__ Attributes __
 	- {static} instance: Singleton*
-	==
+	--
 	__ Methods __
 	.. Getters/Setters ..
 	+ {static} getInstance: Singleton*
@@ -464,7 +464,7 @@ class Pedal
 {
 	__ Attributes __
 	- target: LinkablePart*
-	==
+	--
 	__ Methods __
 	+ setTarget(p_part: LinkablePart*): void
 	+ use(p_pression: float): void
@@ -478,7 +478,7 @@ class SteerWheel
 {
 	__ Attributes __
 	- dae: Dae*
-	==
+	--
 	__ Methods __
 	+ turn(p_angle: float): void
 	.. Getters/Setters ..
@@ -495,7 +495,7 @@ class Motor
 	- injector: Injector
 	- explosionChamber: ExplosionChamber
 	- crankshaft: Crankshaft
-	==
+	--
 	__ Methods __
 	+ connectToTransmission(p_transmission: Transmission*): void
 	.. Getters/Setters ..
@@ -514,7 +514,7 @@ class Crankshaft
 {
 	__ Attributes __
 	- transmission: Transmission*
-	==
+	--
 	__ Methods __
 	+ receiveForce(p_volume: float): void
 	.. Getters/Setters ..
@@ -529,7 +529,7 @@ class ExplosionChamber
 {
 	__ Attributes __
 	- crankshaft: Crankshaft*
-	==
+	--
 	__ Methods __
 	+ fill(p_volume: float): void
 	.. Getters/Setters ..
@@ -544,7 +544,7 @@ class Injector
 {
 	__ Attributes __
 	- explosionChamber: ExplosionChamber*
-	==
+	--
 	__ Methods __
 	+ execute(p_pression: float): void
 	.. Getters/Setters ..
@@ -559,7 +559,7 @@ class Transmission
 {
 	__ Attributes __
 	- wheels: *Wheel[]
-	==
+	--
 	__ Methods __
 	+ activate(p_force: float): void
 	.. Getters/Setters ..
@@ -574,7 +574,7 @@ class Brake
 {
 	__ Attributes __
 	- wheel: Wheel*
-	==
+	--
 	__ Methods __
 	+ execute(p_force: float): void
 	+ attackWheel(p_wheel: Wheel*): void
@@ -592,7 +592,7 @@ class Cockpit
 	- pedal: Pedal
 	- steerWheel: SteerWheel
 	- gearLever: GearLever
-	==
+	--
 	__ Methods __
 	.. Getters/Setters ..
 	+ getPedal(): Pedal
@@ -610,7 +610,7 @@ class BrakeController
 {
 	__ Attributes __
 	- brakes: Brake[]
-	==
+	--
 	__ Methods __
 	+ execute(p_pression: float): void
 	.. Getters/Setters ..
@@ -626,7 +626,7 @@ class Dae
 	__ Attributes __
 	- direction: Direction*
 	- force: float
-	==
+	--
 	__ Methods __
 	+ use(p_angle: float): void
 	.. Getters/Setters ..
@@ -643,7 +643,7 @@ class Direction
 {
 	__ Attributes __
 	- wheels: Wheel[]
-	==
+	--
 	__ Methods __
 	+ turn(p_angle: float): void
 	.. Getters/Setters ..
@@ -658,7 +658,7 @@ class Electronics
 {
 	__ Attributes __
 	- dae: Dae
-	==
+	--
 	__ Methods __
 	.. Getters/Setters ..
 	+ getDae(): Dae
@@ -677,7 +677,7 @@ class Car
 	- direction: Direction
 	- transmission: Transmission
 	- motor: Motor
-	==
+	--
 	__ Methods __
 	.. Getters/Setters ..
 	+ getBrakeController(): BrakeController
