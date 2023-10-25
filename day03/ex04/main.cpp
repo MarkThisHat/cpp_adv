@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 14:05:46 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 14:21:18 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:30:27 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main()
 	loggers.push_back(&consoleLogger1);
 	loggers.push_back(&consoleLogger2);
 
-	const char* messages[] = {"Message A", "Message B", "Message C"};
+	const char* messages[] = { "Message A", "Message B", "Message C" };
 
 	for (size_t i = 0; i < sizeof(messages) / sizeof(messages[0]); i++)
 	{
@@ -62,10 +62,13 @@ void	StreamLogger::write(const char* message)
 	{
 		time_t		rawtime;
 		struct tm*	timeinfo;
-		char		timestamp[20];
+		char		timestamp[25];
+
 		time(&rawtime);
 		timeinfo = localtime(&rawtime);
-		strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S ", timeinfo);
+		size_t len = strftime(timestamp, sizeof(timestamp) - 1,\
+		 "%Y-%m-%d %H:%M:%S ", timeinfo);
+		timestamp[len] = '\0';
 		outputStream << timestamp;
 	}
 	if (header)
@@ -92,10 +95,13 @@ void	FileLogger::write(const char* message)
 	{
 		time_t rawtime;
 		struct tm* timeinfo;
-		char timestamp[20];
+		char timestamp[25];
+
 		time(&rawtime);
 		timeinfo = localtime(&rawtime);
-		strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S ", timeinfo);
+		size_t len = strftime(timestamp, sizeof(timestamp) - 1,\
+		 "%Y-%m-%d %H:%M:%S", timeinfo);
+		timestamp[len] = '\0';
 		file << timestamp;
 	}
 	if (header)
