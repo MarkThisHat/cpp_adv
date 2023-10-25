@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:22:03 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/24 16:28:57 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:20:03 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ class	Shape
 	public:
 		virtual ~Shape() {}
 
-		virtual double area() const = 0;
-		virtual double perimeter() const = 0;
+		virtual double getArea() const = 0;
+		virtual double getPerimeter() const = 0;
 };
 
 #endif

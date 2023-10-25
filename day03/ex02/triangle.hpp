@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:31:24 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/24 16:41:35 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:21:30 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ class Triangle : public Shape
 {
 	private:
 		double	side_;
-		static const double	SQRT3_DIV_4 = 0.433;
+		const double SQRT3_DIV_4 = 0.43333;
 
 	public:
 		Triangle(double side) : 
 		side_(side)
 		{}
 
-		double	area() const
+		double	getArea() const
 		{
-			return (SQRT3_DIV_4 * side * side);
+			return (SQRT3_DIV_4 * side_ * side_);
 		}
 
-		double	perimeter() const
+		double	getPerimeter() const
 		{
-			return (3 * side);
+			return (3 * side_);
 		}
 };
 

@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:41:08 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/24 16:43:21 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:20:58 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,19 @@ class	Circle : public Shape
 {
 	private:
 		double	radius;
-		const double PI = 3.14;
+		const double PI = 3.14159265;
 
 	public:
-		Circle(double r) : radius(r) {}
+		Circle(double r) :
+		radius(r)
+		{}
 
-		double area() const
+		double getArea() const
 		{
 			return (PI * radius * radius);
 		}
 
-		double perimeter() const
+		double getPerimeter() const
 		{
 			return (2 * PI * radius);
 		}
