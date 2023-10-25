@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:34:53 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 09:41:34 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:16:58 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,20 @@ class	EmployeeManager
 
 		void	calculatePayroll()
 		{
-			int	employeeSalary;
 			int	totalPayRoll = 0;
 			int	employeeCount = 1;
-	
+
 			for (std::vector<Employee*>::iterator it = employees.begin();\
 			 it != employees.end(); ++it)
 			 {
-				std::cout << "Employee " << count++ << ":\n$";
-				employeeSalary = (*it)->executeWorkday() * MONTHLY_WORK;
-				std::cout << " this month\n" << employeeSalary << std::endl;
-				totalPayRoll += employeeSalary;
+				int	salary = 0;
+				for (int i = 0; i < MONTHLY_WORK; i++)
+					salary += (*it)->executeWorkday();
+				std::cout << "\nEmployee " << employeeCount++;
+				std::cout << "\nSalary this month $" << salary << std::endl;
+				totalPayRoll += salary;
 			 }
-			 std::cout << "Payroll of the month $" << totalPayRoll << std::endl;
+			 std::cout << "\nPayroll of the month $" << totalPayRoll << std::endl;
 		}
 };
 
