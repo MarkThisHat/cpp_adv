@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:34:27 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/24 22:26:03 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/25 09:22:16 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 
 enum	DayOfWork
 {
-	SINGLE_DAY = 7
+	SINGLE_DAY = 7,
+	MONTHLY_WORK = 22
 }
 
 class	Employee
@@ -30,24 +31,6 @@ class	Employee
 	public:
 		Employee(int hourly): hourlyValue(hourly) {}
 		virtual int executeWorkday() = 0;
-};
-
-class	Mobilizable
-{
-	public:
-		virtual void mobilizeForHours(int hours) = 0;
-};
-
-class	AbsentRegisterable
-{
-	public:
-		virtual void registerAbsentHours(int hours) = 0;
-};
-
-class	SchoolAttendable
-{
-	public:
-		virtual void registerSchoolHours(int hours) = 0;
 };
 
 #endif

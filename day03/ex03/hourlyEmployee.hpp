@@ -6,49 +6,43 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:35:16 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/24 22:33:22 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/25 09:58:59 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HOURLYEMPLOYEE_HPP
 # define HOURLYEMPLOYEE_HPP
 
-class TempWorker : public Employee
+#include "employee.hpp"
+
+class	TempWorker : public Employee
 {
-	int	registeredHours;
-	int	mobilisedHours;
+	private:
+		int	mobilizedHours;
 
 	public:
 		TempWorker(int hourly) :
 		Employee(hourly),
-		registeredHours(0),
-		mobilisedHours(0)
+		mobilizedHours(0)
 		{}
 
-		void registerWorkHours(int hours)
+		void mobilize(int hours)
 		{
-			registeredHours += hours;
+			mobilizedHours += hours;
 		}
 
-		void mobiliseForPeriod(int hours)
+		int executeWorkday()
 		{
-			mobilisedHours += hours;
-		}
-
-		int executeWorkday() 
-		{
-			if (mobilisedHours > 0)
+			if (mobilizedHours <= 0)
+				return (0);
+			if (mobilizedHours >= SINGLE_DAY)
 			{
-				mobilisedHours--;
-				registeredHours--;
-				return hourlyValue;
+				mobilizedHours -= SINGLE_DAY;
+				return (hourlyValue * SINGLE_DAY);
 			}
-			if (registeredHours > 0)
-			{
-				registeredHours--;
-				return hourlyValue;
-			}
-			return 0;
+			int	actualWorkedHours = mobilizedHours;
+			mobilizedHours = 0;
+			return (hourlyValue * actualWorkedHours);
 		}
 };
 
