@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:35:16 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 11:09:55 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:26:01 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,8 @@ class	TempWorker : public Employee
 		mobilizedHours(0)
 		{}
 
-		void mobilize(int hours)
-		{
-			mobilizedHours += hours;
-		}
-
-		int executeWorkday()
-		{
-			if (mobilizedHours <= 0)
-				return (0);
-			if (mobilizedHours >= SINGLE_DAY)
-			{
-				mobilizedHours -= SINGLE_DAY;
-				return (hourlyValue * SINGLE_DAY);
-			}
-			int	actualWorkedHours = mobilizedHours;
-			mobilizedHours = 0;
-			return (hourlyValue * actualWorkedHours);
-		}
+		int		executeWorkday();
+		void	mobilize(int hours);
 };
 
 #endif

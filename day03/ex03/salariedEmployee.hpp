@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:35:47 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 11:10:49 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:25:09 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,8 @@ class	ContractEmployee : public Employee
 		absentHours(0)
 		{}
 
-		void	registerAbsentHours(int hours)
-		{
-			absentHours += hours;
-		}
-
-		int executeWorkday()
-		{
-			if (absentHours <= 0)
-				return (hourlyValue * SINGLE_DAY);
-			if (absentHours >= SINGLE_DAY)
-			{
-				absentHours -= SINGLE_DAY;
-				return (0);
-			}
-			int	actualWorkedHours = absentHours;
-			absentHours = 0;
-			return (hourlyValue * actualWorkedHours);
-		}
+		int		executeWorkday();
+		void	registerAbsentHours(int hours);
 };
 
 class	Apprentice : public Employee
@@ -59,45 +43,9 @@ class	Apprentice : public Employee
 		schoolHours(0)
 		{}
 
-		void registerAbsentHours(int hours)
-		{
-			absentHours += hours;
-		}
-
-		void registerSchoolHours(int hours)
-		{
-			schoolHours += hours;
-		}
-
-	int		executeWorkday()
-	{
-		int paidWorkerHours = 0;
-		int hoursCounted = 0;
-
-		if (schoolHours > 0) 
-		{
-			if (schoolHours >= SINGLE_DAY)
-			{
-				schoolHours -= SINGLE_DAY;
-				return ((hourlyValue * SINGLE_DAY) / 2);
-			}
-			paidWorkerHours += ((hourlyValue * schoolHours) / 2);
-			hoursCounted += schoolHours;
-			schoolHours = 0;
-		}
-		if (absentHours >= (SINGLE_DAY - hoursCounted))
-		{
-			absentHours -= (SINGLE_DAY - hoursCounted);
-			return paidWorkerHours;
-		}
-		else if (absentHours > 0)
-		{
-			hoursCounted += absentHours;
-			absentHours = 0; 
-		}
-		paidWorkerHours += hourlyValue * (SINGLE_DAY - hoursCounted);
-		return paidWorkerHours;
-	}
-};
+		int		executeWorkday();
+		void	registerAbsentHours(int hours);
+		void	registerSchoolHours(int hours);
+	};
 
 #endif
