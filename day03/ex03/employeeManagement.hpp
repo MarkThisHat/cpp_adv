@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:34:53 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 11:28:34 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:41:34 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@
 class	EmployeeManager
 {
 	private:
-		std::vector<Employee*> employees;
+		void*	employees;
 
 	public:
+		EmployeeManager();
+		~EmployeeManager();
 		void	addEmployee(Employee* e);
 		void	removeEmployee(Employee* e);
 		void	executeWorkday();

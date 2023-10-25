@@ -6,9 +6,13 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:36:21 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 11:27:31 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:42:31 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <vector>
+#include <algorithm>
+#include <iostream>
 
 #include "employeeManagement.hpp"
 #include "hourlyEmployee.hpp"
@@ -127,21 +131,40 @@ int		TempWorker::executeWorkday()
 }
 
 /*EmployeeManager*/
+EmployeeManager::EmployeeManager()
+{
+	employees = new std::vector<Employee*>();
+}
+
+EmployeeManager::~EmployeeManager()
+{
+	delete static_cast<std::vector<Employee*>*>(employees);
+}
+
 void	EmployeeManager::addEmployee(Employee* e)
 {
-	employees.push_back(e);
+	std::vector<Employee*>* empVector =\
+	 static_cast<std::vector<Employee*>*>(employees);
+
+    empVector->push_back(e);
 }
 
 void	EmployeeManager::removeEmployee(Employee* e)
 {
-	employees.erase(std::remove(employees.begin(),\
-		employees.end(), e), employees.end());
+	std::vector<Employee*>* empVector =\
+	 static_cast<std::vector<Employee*>*>(employees);
+
+	empVector->erase(std::remove(empVector->begin(),\
+		empVector->end(), e), empVector->end());
 }
 
 void	EmployeeManager::executeWorkday()
 {
+	std::vector<Employee*>* empVector =\
+	 static_cast<std::vector<Employee*>*>(employees);
+
 	for (std::vector<Employee*>::iterator it =\
-		employees.begin(); it != employees.end(); ++it)
+		empVector->begin(); it != empVector->end(); ++it)
 		(*it)->executeWorkday();
 }
 
@@ -150,8 +173,10 @@ void	EmployeeManager::calculatePayroll()
 	int	totalPayRoll = 0;
 	int	employeeCount = 1;
 
-	for (std::vector<Employee*>::iterator it = employees.begin();\
-		it != employees.end(); ++it)
+	std::vector<Employee*>* empVector =\
+	 static_cast<std::vector<Employee*>*>(employees);
+	for (std::vector<Employee*>::iterator it = empVector->begin();\
+		it != empVector->end(); ++it)
 		{
 		int	salary = 0;
 		for (int i = 0; i < MONTHLY_WORK; i++)
