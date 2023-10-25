@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 15:13:59 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/24 15:40:55 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:38:54 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,6 @@ int main(void)
 	return (0);
 }
 
-//c++ -Wall -Werror -Wextra -I ./ main.cpp -o olid
+/*
+c++ -Wall -Werror -Wextra -I ./ main.cpp -o olid
+*/
