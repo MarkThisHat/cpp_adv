@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   StaffList.hpp                                      :+:      :+:    :+:   */
+/*   main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 11:12:49 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 16:02:37 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/26 14:06:59 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/26 14:20:25 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STAFFLIST_HPP
-# define STAFFLIST_HPP
+#ifndef MAIN_HPP
+# define MAIN_HPP
 
-# include "Singleton.hpp"
-# include "Staff.hpp"
-
-class	StaffList : public Singleton<StaffList, Staff*>
-{
-	//friend class	Singleton<StaffList, Staff*>;
-};
+# include <iostream>
+# include <vector>
+# include "StudentList.hpp"
+# include "StaffList.hpp"
+# include "CourseList.hpp"
+# include "RoomList.hpp"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 23:06:17 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 23:19:15 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:29:19 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 
 enum class	FormType
 {
-	CourseFinished
-	NeedMoreClassRoom
-	NeedCourseCreation
+	CourseFinished,
+	NeedMoreClassRoom,
+	NeedCourseCreation,
 	SubscriptionToCourse
 };
 
 class	Form
 {
 	private:
+		bool		_isSigned;
 		FormType	_formType;
 
 	public:

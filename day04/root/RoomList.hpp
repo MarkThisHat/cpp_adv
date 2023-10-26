@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 13:49:57 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 14:18:10 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:02:33 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 class RoomList : public Singleton<RoomList, Room*>
 {
-	friend class Singleton<RoomList, Room*>;
+	//friend class Singleton<RoomList, Room*>;
 };
 
 #endif
