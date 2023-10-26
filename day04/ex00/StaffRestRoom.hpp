@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Course.hpp                                         :+:      :+:    :+:   */
+/*   StaffRestRoom.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 17:02:20 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 23:15:23 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/25 17:04:01 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/25 22:53:18 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COURSE_HPP
-# define COURSE_HPP
+#ifndef STAFFRESTROOM_HPP
+# define STAFFRESTROOM_HPP
 
-class Course
+class	StaffRestRoom : public Room
 {
 	private:
-		std::string				_name;
-		Professor*				_responsable;
-		std::vector<Student*>	_students;
-		int 					_numberOfClassToGraduate;
-		int						_maximumNumberOfStudent;
 
 	public:
-		Course(std::string p_name);
-		void	assign(Professor* p_professor);
-		void	subscribe(Student* p_student);
+
 };
 
 #endif

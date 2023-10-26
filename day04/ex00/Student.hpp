@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Course.hpp                                         :+:      :+:    :+:   */
+/*   Student.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 17:02:20 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 23:15:23 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/25 22:37:25 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/25 22:56:10 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COURSE_HPP
-# define COURSE_HPP
+#ifndef STUDENT_HPP
+# define STUDENT_HPP
 
-class Course
+class	Student : public Person
 {
 	private:
-		std::string				_name;
-		Professor*				_responsable;
-		std::vector<Student*>	_students;
-		int 					_numberOfClassToGraduate;
-		int						_maximumNumberOfStudent;
+		std::vector<Course*>	_subscribedCourse;
 
 	public:
-		Course(std::string p_name);
-		void	assign(Professor* p_professor);
-		void	subscribe(Student* p_student);
+		void	attendClass(Classroom* p_classroom);
+		void	exitClass();
+		void	graduate(Course* p_course);
 };
 
 #endif

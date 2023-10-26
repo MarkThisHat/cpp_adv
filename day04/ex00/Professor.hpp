@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Course.hpp                                         :+:      :+:    :+:   */
+/*   Professor.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 17:02:20 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 23:15:23 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/25 22:58:25 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/25 23:04:45 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COURSE_HPP
-# define COURSE_HPP
+#ifndef PROFESSOR_HPP
+# define PROFESSOR_HPP
 
-class Course
+class	Professor : public Staff
 {
 	private:
-		std::string				_name;
-		Professor*				_responsable;
-		std::vector<Student*>	_students;
-		int 					_numberOfClassToGraduate;
-		int						_maximumNumberOfStudent;
+		Course*	_currentCourse;
 
 	public:
-		Course(std::string p_name);
-		void	assign(Professor* p_professor);
-		void	subscribe(Student* p_student);
+		void	assignCourse(Course* p_course);
+		void	doClass();
+		void	closeCourse();
 };
 
 #endif

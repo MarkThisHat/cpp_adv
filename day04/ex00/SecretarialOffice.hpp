@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Course.hpp                                         :+:      :+:    :+:   */
+/*   SecretarialOffice.hpp                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 17:02:20 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 23:15:23 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/25 17:04:01 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/25 22:51:15 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COURSE_HPP
-# define COURSE_HPP
+#ifndef SECRETARIALOFFICE_HPP
+# define SECRETARIALOFFICE_HPP
 
-class Course
+class	SecretarialOffice: public Room
 {
 	private:
-		std::string				_name;
-		Professor*				_responsable;
-		std::vector<Student*>	_students;
-		int 					_numberOfClassToGraduate;
-		int						_maximumNumberOfStudent;
+		std::vector<Form*>	_archivedForms;
 
 	public:
-		Course(std::string p_name);
-		void	assign(Professor* p_professor);
-		void	subscribe(Student* p_student);
+
 };
 
 #endif

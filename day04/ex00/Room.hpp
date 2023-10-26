@@ -6,11 +6,14 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:04:01 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 17:04:40 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/25 22:46:08 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-class Room
+#ifndef ROOM_HPP
+# define ROOM_HPP
+
+class	Room
 {
 	private:
 		long long				ID;
@@ -18,9 +21,12 @@ class Room
 
 	public:
 		Room();
+		~Room();
 		bool	canEnter(Person*);
 		void	enter(Person*);
 		void	exit(Person*);
 		
 		void	printOccupant();
 };
+
+#endif
