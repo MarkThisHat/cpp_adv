@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   StaffList.hpp                                      :+:      :+:    :+:   */
+/*   Staff.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 11:12:49 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 11:51:02 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/25 22:37:25 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/26 14:35:45 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STAFFLIST_HPP
-# define STAFFLIST_HPP
+#ifndef STAFF_HPP
+# define STAFF_HPP
 
-#include "Singleton.hpp"
+# include "Person.hpp"
 
-class	StaffList : public Singleton<StaffList, Staff*>
+class	Form;
+
+class	Staff : public Person
 {
-	friend class	Singleton<StaffList, Staff*>;
+	private:
+
+	public:
+		using	Person::Person;
+		void	sign(Form* p_form);
 };
 
 #endif

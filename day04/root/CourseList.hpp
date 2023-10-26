@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Course.hpp                                         :+:      :+:    :+:   */
+/*   CourseList.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 17:02:20 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 23:15:23 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/26 13:49:57 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/26 14:17:34 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COURSE_HPP
-# define COURSE_HPP
+#ifndef COURSELIST_HPP
+# define COURSELIST_HPP
 
-class Course
+# include "Singleton.hpp"
+# include "Course.hpp"
+
+class	CourseList : public Singleton<CourseList, Course*>
 {
-	private:
-		std::string				_name;
-		Professor*				_responsable;
-		std::vector<Student*>	_students;
-		int 					_numberOfClassToGraduate;
-		int						_maximumNumberOfStudent;
-
-	public:
-		Course(std::string p_name);
-		void	assign(Professor* p_professor);
-		void	subscribe(Student* p_student);
+	friend class Singleton<CourseList, Course*>;
 };
 
 #endif

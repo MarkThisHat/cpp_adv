@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Student.hpp                                        :+:      :+:    :+:   */
+/*   StaffList.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 22:37:25 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 22:56:10 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/26 11:12:49 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/26 14:17:57 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STUDENT_HPP
-# define STUDENT_HPP
+#ifndef STAFFLIST_HPP
+# define STAFFLIST_HPP
 
-class	Student : public Person
+# include "Singleton.hpp"
+# include "Staff.hpp"
+
+class	StaffList : public Singleton<StaffList, Staff*>
 {
-	private:
-		std::vector<Course*>	_subscribedCourse;
-
-	public:
-		void	attendClass(Classroom* p_classroom);
-		void	exitClass();
-		void	graduate(Course* p_course);
+	friend class	Singleton<StaffList, Staff*>;
 };
 
 #endif

@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Room.hpp                                           :+:      :+:    :+:   */
+/*   StudentList.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 17:04:01 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 22:46:08 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/26 11:09:34 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/26 14:17:47 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROOM_HPP
-# define ROOM_HPP
+#ifndef STUDENTLIST_HPP
+# define STUDENTLIST_HPP
 
-class	Room
+# include "Singleton.hpp"
+# include "Student.hpp"
+
+class	StudentList : public Singleton<StudentList, Student*>
 {
-	private:
-		long long				ID;
-		std::vector<Person*>	_occupants;
-
-	public:
-		Room();
-		~Room();
-		bool	canEnter(Person*);
-		void	enter(Person*);
-		void	exit(Person*);
-		
-		void	printOccupant();
+	friend class Singleton<StudentList, Student*>;
 };
 
 #endif

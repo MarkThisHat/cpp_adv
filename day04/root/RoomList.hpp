@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Person.hpp                                         :+:      :+:    :+:   */
+/*   RoomList.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 22:37:25 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 22:55:36 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/26 13:49:57 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/26 14:18:10 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PERSON_HPP
-# define PERSON_HPP
+#ifndef ROOMLIST_HPP
+# define ROOMLIST_HPP
 
-class	Person
+# include "Singleton.hpp"
+# include "Room.hpp"
+
+class RoomList : public Singleton<RoomList, Room*>
 {
-	private:
-		std::string	_name;
-		Room*		_currentRoom;
-	public:
-		Person(std::string p_name);
-		~Person();
-		Room*	room() { return (_currentRoom); }
+	friend class Singleton<RoomList, Room*>;
 };
 
 #endif

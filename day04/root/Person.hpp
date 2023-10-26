@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   StudentList.hpp                                    :+:      :+:    :+:   */
+/*   Person.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 11:09:34 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 11:50:45 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/25 22:37:25 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/26 14:49:42 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STUDENTLIST_HPP
-# define STUDENTLIST_HPP
+#ifndef PERSON_HPP
+# define PERSON_HPP
 
-#include "Singleton.hpp"
+# include <string> 
 
-class	StudentList : public Singleton<StudentList, Student*>
+class	Room;
+
+class	Person
 {
-    friend class Singleton<StudentList, Student*>;
+	private:
+		std::string	_name;
+		Room*		_currentRoom;
+
+	public:
+		Person(std::string p_name) : _name(p_name) {};
+		~Person() = default;
+		Room*	room() { return (_currentRoom); }
+		const std::string getName() const{ return (_name); }
 };
 
 #endif
