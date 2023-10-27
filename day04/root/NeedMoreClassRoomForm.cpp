@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 23:09:44 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 22:15:29 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/26 22:16:16 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,5 @@ void	NeedMoreClassRoomForm::execute()
 	std::cout << " students from the current " << currentAttendance;
 	std::cout "." << std::endl;
 }
-
 
 #endif

@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   SubscriptionToCourseForm.hpp                       :+:      :+:    :+:   */
+/*   SubscriptionToCourseForm.cpp                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 23:09:44 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 22:19:18 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/26 22:22:37 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SUBSCRIPTIONTOCOURSEFORM_HPP
-# define SUBSCRIPTIONTOCOURSEFORM_HPP
+#include "SubscriptionToCourseForm.hpp"
 
-# include <string>
-# include <iostream>
-# include "Form.hpp"
+SubscriptionToCourseForm::CourseSubscription(\
+const std::string& cName, const std::string& sName) :
+Form(FormType::CourseSubscription),
+courseName(cName),
+studentName(sName),
+{}
 
-class	SubscriptionToCourseForm : public Form
+void	SubscriptionToCourseForm::execute()
 {
-	private:
-		std::string	courseName;
-		std::string	studentName;
-
-	public:
-		CourseSubscription(const std::string& cName, const std::string& sName);
-
-		virtual void	execute() override;
-};
-
-#endif
+	std::cout << "Course Subscription Form for " << studentName;
+	std::cout << " in course " << courseName;
+	if (!isSigned())
+	{
+		std::cout << " is void." << std::endl;
+			return ;
+	}
+	std::cout << " is approved."  << std::endl;
+}
