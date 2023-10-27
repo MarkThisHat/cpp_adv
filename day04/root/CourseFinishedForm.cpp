@@ -6,13 +6,13 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 23:09:44 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 21:58:59 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/26 23:50:14 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "CourseFinishedForm.hpp"
 
-CourseFinishedForm::CourseFinished(\
+CourseFinishedForm::CourseFinishedForm(\
 	const std::string& cName,\
 	const std::string& sName,\
 	int grade,\
@@ -35,6 +35,6 @@ void	CourseFinishedForm::execute()
 			return ;
 	}
 	std::cout << " is approved with grade " << finalGrade;
-	std::cout << " on year " << yearOfCompletion;
-	std::cout << "of graduation." << std::endl;
+	std::cout << " on graduation year " << yearOfCompletion;
+	std::cout << "." << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 23:06:17 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 22:01:10 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/26 22:50:42 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class	Form
 		virtual void	execute() = 0;
 
 		bool		isSigned() { return _isSigned; }
+		void		signDocument() { _isSigned = true; }
 		FormType	getType() const { return _formType; }
 };
 

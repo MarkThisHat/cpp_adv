@@ -6,15 +6,15 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 23:09:44 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 22:16:16 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/26 23:11:46 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "NeedMoreClassRoomForm.hpp"
 
-NeedMoreClassRoomForm::MoreClassRoom(\
+NeedMoreClassRoomForm::NeedMoreClassRoomForm(\
 const std::string& cName, int current, int expected) :
-Form(FormType::NeedMoreClassRoomForm),
+Form(FormType::NeedMoreClassRoom),
 courseName(cName),
 currentAttendance(current),
 expectedIncrease(expected)
@@ -31,7 +31,5 @@ void	NeedMoreClassRoomForm::execute()
 	}
 	std::cout << " is approved to accomodate " << expectedIncrease;
 	std::cout << " students from the current " << currentAttendance;
-	std::cout "." << std::endl;
+	std::cout << "." << std::endl;
 }
-
-#endif

@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 22:37:25 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 14:35:45 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/26 23:00:46 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,13 @@ class	Staff : public Person
 	private:
 
 	public:
-		using	Person::Person;
-		void	sign(Form* p_form);
+		Staff() : Person("") {}
+		Staff(const std::string& name) : Person(name) {}
+
+		void	sign(std::unique_ptr<Form> p_form)
+		{
+			p_form->signDocument();
+		}
 };
 
 #endif

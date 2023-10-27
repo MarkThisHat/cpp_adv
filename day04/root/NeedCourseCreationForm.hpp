@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 23:09:44 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 22:01:38 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/26 22:41:35 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ class	NeedCourseCreationForm : public Form
 		int			maximumAttendance;
 
 	public:
-		CourseCreation(const std::string& cName, int duration, int attendance);
+		NeedCourseCreationForm(\
+		const std::string& cName, int duration, int attendance);
 
 		virtual void	execute() override;
 };

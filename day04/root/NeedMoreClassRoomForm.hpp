@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 23:09:44 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 22:10:37 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/26 22:41:56 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ class	NeedMoreClassRoomForm : public Form
 		int			expectedIncrease;
 
 	public:
-		MoreClassRoom(const std::string& cName, int current, int expected);
+		NeedMoreClassRoomForm(\
+		const std::string& cName, int current, int expected);
 
 		virtual void	execute() override;
 };

@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 23:09:44 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 22:19:18 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/26 22:42:15 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ class	SubscriptionToCourseForm : public Form
 		std::string	studentName;
 
 	public:
-		CourseSubscription(const std::string& cName, const std::string& sName);
+		SubscriptionToCourseForm(\
+		const std::string& cName, const std::string& sName);
 
 		virtual void	execute() override;
 };
