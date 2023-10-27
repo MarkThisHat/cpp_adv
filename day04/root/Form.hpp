@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 23:06:17 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 22:50:42 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/27 10:36:04 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ class	Form
 		FormType	_formType;
 
 	public:
-		Form(FormType p_formType) : _isSigned(false), _formType(p_formType) {}
-
+		virtual ~Form() = default;
 		virtual void	execute() = 0;
+
+		Form(FormType p_formType) : _isSigned(false), _formType(p_formType) {}
 
 		bool		isSigned() { return _isSigned; }
 		void		signDocument() { _isSigned = true; }

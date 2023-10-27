@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 22:47:33 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/27 09:05:55 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/27 10:34:55 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ int	main(void)
 	auto formFinB = sec.createForm(FormType::CourseFinished, "Defense Against the Dark Arts", "Draco Malfoy", 99, 2023);
 	hm.receiveForm(std::move(formFinB));
 
-	auto formSubA = sec.createForm(FormType::SubscriptionToCourse, "Hermione Granger", "Quantum Charms");
+	auto formSubA = sec.createForm(FormType::SubscriptionToCourse, "Hermione Granger", "Quantum Charms", 0, 0);
 	hm.receiveForm(std::move(formSubA));
 	hm.signLastForm();
 
-	auto formSubB = sec.createForm(FormType::SubscriptionToCourse, "Ronald Weasley", "Quantum Charms");
+	auto formSubB = sec.createForm(FormType::SubscriptionToCourse, "Ronald Weasley", "Quantum Charms", 0, 0);
 	hm.dispatchAllForms();
 
 
