@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 23:09:44 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 23:11:46 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/27 10:47:31 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ expectedIncrease(expected)
 
 void	NeedMoreClassRoomForm::execute()
 {
-	std::cout << "New room for  "  << courseName;
+	std::cout << "New room for "  << courseName;
 	std::cout << " expansion";
 	if (!isSigned())
 	{
