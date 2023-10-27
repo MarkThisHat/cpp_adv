@@ -6,7 +6,7 @@
 #    By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/16 13:55:12 by maalexan          #+#    #+#              #
-#    Updated: 2023/10/27 11:04:09 by maalexan         ###   ########.fr        #
+#    Updated: 2023/10/27 11:30:05 by maalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,12 +24,16 @@ CFLAGS		:=	-Wall -Wextra -Werror -g -I $(HDR_DIR)
 
 # Source files
 FUN			:=	main.cpp \
-				CourseFinishedForm.cpp \
-				NeedCourseCreationForm.cpp \
-				NeedMoreClassRoomForm.cpp \
+				Bell.cpp \
 				Headmaster.cpp \
+				NeedCourseCreationForm.cpp \
+				Person.cpp \
 				Secretary.cpp \
-				SubscriptionToCourseForm.cpp
+				SubscriptionToCourseForm.cpp \
+				CourseFinishedForm.cpp \
+				NeedMoreClassRoomForm.cpp \
+				Room.cpp \
+				Student.cpp
 
 # Object files
 OBJ			:=	$(FUN:%.cpp=$(OBJ_DIR)/%.o)
