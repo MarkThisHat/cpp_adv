@@ -6,19 +6,28 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 23:09:44 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/25 23:19:47 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/26 22:01:38 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef NEEDCOURSECREATIONFORM_HPP
 # define NEEDCOURSECREATIONFORM_HPP
 
+# include <iostream>
+# include <string>
+# include "Form.hpp"
+
 class	NeedCourseCreationForm : public Form
 {
 	private:
+		std::string	courseName;
+		int			semesterDuration;
+		int			maximumAttendance;
 
 	public:
-		void	execute();
+		CourseCreation(const std::string& cName, int duration, int attendance);
+
+		virtual void	execute() override;
 };
 
 #endif

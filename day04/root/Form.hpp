@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 23:06:17 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 16:29:19 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/26 22:01:10 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ enum class	FormType
 	SubscriptionToCourse
 };
 
+class	CourseFinished;
+class	NeedMoreClassRoom;
+class	NeedCourseCreation;
+class	SubscriptionToCourse;
+
 class	Form
 {
 	private:
@@ -28,13 +33,12 @@ class	Form
 		FormType	_formType;
 
 	public:
-		~Form();
-		Form(FormType p_formType)
-		{
+		Form(FormType p_formType) : _isSigned(false), _formType(p_formType) {}
 
-		}
+		virtual void	execute() = 0;
 
-	virtual void	execute() = 0;
+		bool		isSigned() { return _isSigned; }
+		FormType	getType() const { return _formType; }
 };
 
 #endif
