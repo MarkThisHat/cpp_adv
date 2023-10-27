@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:04:01 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 18:52:41 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:25:19 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class	Room
 
 	public:
 		Room() {};
-		Room(const std::string& name) : _name(name) ID(++nextId) {};
+		Room(const std::string& name) : ID(++nextId), _name(name) {};
 		~Room() {};
 		bool	canEnter(Person*);
 		void	enter(Person*);
