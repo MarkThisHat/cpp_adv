@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 22:47:33 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/27 10:45:45 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:06:37 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ int	main(void)
 
 	auto formCreaB = sec.createForm(FormType::NeedCourseCreation, "Elder Bathroom Peeking", "Quantum Charms", 9, 12345);
 	hm.receiveForm(std::move(formCreaB));
-
-
 
 	hm.dispatchAllForms();
 

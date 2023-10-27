@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Staff.hpp                                          :+:      :+:    :+:   */
+/*   Headmaster.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 22:37:25 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/27 11:08:57 by maalexan         ###   ########.fr       */
+/*   Created: 2023/10/27 10:57:26 by maalexan          #+#    #+#             */
+/*   Updated: 2023/10/27 11:00:15 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STAFF_HPP
-# define STAFF_HPP
+#include "Headmaster.hpp"
 
-# include "Person.hpp"
-# include "Form.hpp"
-
-class	Staff : public Person
+void	Headmaster::dispatchAllForms()
 {
-	private:
-
-	public:
-		Staff() : Person("") {}
-		Staff(const std::string& name) : Person(name) {}
-
-		void	sign(std::unique_ptr<Form> p_form)
-		{
-			p_form->signDocument();
-		}
-};
-
-#endif
+	for (auto& form : _formToValidate)
+	{
+		form->execute();
+		_secretary.archiveForm(std::move(form));
+	}
+	_formToValidate.clear();
+}
