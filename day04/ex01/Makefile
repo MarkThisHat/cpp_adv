@@ -6,7 +6,7 @@
 #    By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/16 13:55:12 by maalexan          #+#    #+#              #
-#    Updated: 2023/10/27 12:19:15 by maalexan         ###   ########.fr        #
+#    Updated: 2023/10/27 12:34:10 by maalexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ CC			:=	c++
 CFLAGS		:=	-Wall -Wextra -Werror -g -I $(HDR_DIR)
 
 # Source files
-FUN			:=	main.cpp 
+FUN			:=	main.cpp
 
 # Object files
 OBJ			:=	$(FUN:%.cpp=$(OBJ_DIR)/%.o)
