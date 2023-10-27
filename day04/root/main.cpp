@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 22:47:33 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 23:48:37 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/27 09:05:55 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,25 @@
 #include "NeedMoreClassRoomForm.hpp"
 #include "SubscriptionToCourseForm.hpp"
 
-int main() {
-    Secretary sec("Secretary");
-    Headmaster hm("Albus", sec);
+int	main(void)
+{
+	Secretary sec("Secretary");
+	Headmaster hm("Albus", sec);
 
-    // Create a CourseFinished form
-    auto form = sec.createForm(FormType::CourseFinished, "Math101", "John Doe", 95, 2023);
+	auto formFinA = sec.createForm(FormType::CourseFinished, "Defense Against the Dark Arts", "Harry Potter", 95, 2023);
+	hm.receiveForm(std::move(formFinA));
+	hm.signLastForm();
 
-    // Headmaster receives the form
+	auto formFinB = sec.createForm(FormType::CourseFinished, "Defense Against the Dark Arts", "Draco Malfoy", 99, 2023);
+	hm.receiveForm(std::move(formFinB));
+
+	auto formSubA = sec.createForm(FormType::SubscriptionToCourse, "Hermione Granger", "Quantum Charms");
+	hm.receiveForm(std::move(formSubA));
+	hm.signLastForm();
+
+	auto formSubB = sec.createForm(FormType::SubscriptionToCourse, "Ronald Weasley", "Quantum Charms");
+	hm.dispatchAllForms();
 
 
-hm.receiveForm(std::move(form));
-hm.signLastForm();
-hm.dispatchLastForm();
-
-
-    return 0;
+	return 0;
 }

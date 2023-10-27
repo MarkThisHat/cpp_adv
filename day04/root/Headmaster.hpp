@@ -6,7 +6,7 @@
 /*   By: maalexan <maalexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 22:58:25 by maalexan          #+#    #+#             */
-/*   Updated: 2023/10/26 23:48:03 by maalexan         ###   ########.fr       */
+/*   Updated: 2023/10/27 08:57:07 by maalexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ class	Headmaster : public Staff
 			}
 		}
 
-		void dispatchLastForm()
+		void	dispatchAllForms()
 		{
-			if (!_formToValidate.empty())
+			for (auto& form : _formToValidate)
 			{
-				_formToValidate.back()->execute();
-				_secretary.archiveForm(std::move(_formToValidate.back()));
-				_formToValidate.pop_back(); // remove it from the list after dispatching
+				form->execute();
+				_secretary.archiveForm(std::move(form));
 			}
+			_formToValidate.clear();
 		}
 };
 
